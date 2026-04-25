@@ -198,30 +198,20 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 
 /* ── Page Hero (inner pages) ──────────────────────────────── */
 .page-hero {
-  background: var(--navy);
+  background: #EAF0F6;
   padding: calc(var(--nav-h) + 3rem) 2rem 3rem;
-  position: relative;
-  overflow: hidden;
-}
-.page-hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.35;
+  border-bottom: 1px solid #C9D8E8;
 }
 .page-hero-inner {
   max-width: var(--max-w);
   margin: 0 auto;
-  position: relative;
 }
 .page-hero-label {
   font-family: var(--font-ui);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-bright);
+  color: #6B8CAE;
   margin-bottom: 0.8rem;
   display: flex;
   align-items: center;
@@ -231,13 +221,13 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   content: '';
   display: inline-block;
   width: 24px; height: 1px;
-  background: var(--gold);
+  background: #6B8CAE;
 }
 .page-hero-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 300;
-  color: #fff;
+  color: var(--navy);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
