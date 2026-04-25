@@ -24,7 +24,6 @@
         <li><a href="research.html" class="active">Research</a></li>
         <li><a href="publications.html">Publications</a></li>
         <li><a href="working-papers.html">Working Papers</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -55,77 +54,42 @@
     <div class="section-inner">
       <h2 class="section-title">Main Research Themes</h2>
 
-      <div class="research-areas" id="researchAreas">
+      <div style="max-width:720px;">
 
-        <div class="research-area open" data-area="1">
-          <div class="research-area-header" onclick="toggleArea(this.parentElement)">
-            <span class="research-area-number">01</span>
-            <span class="research-area-title">Experimental Asset Markets and Finance</span>
-            <svg class="research-area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-            </svg>
-          </div>
-          <div class="research-area-body">
-            <div class="research-area-content">
-              <p>
-                Within this research thrust, I examine topics such as insider trading regulations,
-                the interaction between social networks and trader behavior, the impact of consumption
-                smoothing on asset prices, dark pools, algorithmic trading, and social trading and
-                information sharing. A recurring question is how information structure and market
-                microstructure affect price efficiency and trader welfare.
-              </p>
-            </div>
-          </div>
-        </div>
+        <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">1. Experimental Asset Markets and Finance</h3>
+        <p style="margin-bottom:1.8rem;">
+          Within this research thrust, I examine topics such as insider trading regulations,
+          the interaction between social networks and trader behavior, the impact of consumption
+          smoothing on asset prices, dark pools, algorithmic trading, and social trading and
+          information sharing. A recurring question is how information structure and market
+          microstructure affect price efficiency and trader welfare.
+        </p>
 
-        <div class="research-area" data-area="2">
-          <div class="research-area-header" onclick="toggleArea(this.parentElement)">
-            <span class="research-area-number">02</span>
-            <span class="research-area-title">Experimental Market Design</span>
-            <svg class="research-area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-            </svg>
-          </div>
-          <div class="research-area-body">
-            <div class="research-area-content">
-              <p>
-                In this research area, I investigate methods to encourage organ donation enrolment,
-                considering factors such as blood compatibility, transplant priority for donors,
-                incentive schemes such as transferable vouchers, family consent, and the relationship
-                between deceased- and living-kin organ donation. I also study how information provision
-                and priority rules jointly affect donation decisions and social welfare, as well as
-                repugnant transactions.
-              </p>
-            </div>
-          </div>
-        </div>
+        <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">2. Experimental Market Design</h3>
+        <p style="margin-bottom:1.8rem;">
+          In this research area, I investigate methods to encourage organ donation enrolment,
+          considering factors such as blood compatibility, transplant priority for donors,
+          incentive schemes such as transferable vouchers, family consent, and the relationship
+          between deceased- and living-kin organ donation. I also study how information provision
+          and priority rules jointly affect donation decisions and social welfare, as well as
+          repugnant transactions.
+        </p>
 
-        <div class="research-area" data-area="3">
-          <div class="research-area-header" onclick="toggleArea(this.parentElement)">
-            <span class="research-area-number">03</span>
-            <span class="research-area-title">Cooperation, Coordination, and Dynamic Social Networks</span>
-            <svg class="research-area-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-            </svg>
-          </div>
-          <div class="research-area-body">
-            <div class="research-area-content">
-              <p>
-                In this research focus, I explore mechanisms to promote cooperation and coordination
-                in social dilemmas, social network formation for prisoner's dilemma and coordination
-                games, the evolution of cooperation in dynamic networks, and the impact of social
-                identity on group interactions. I am particularly interested in how network topology
-                and link flexibility shape the emergence of prosocial norms.
-              </p>
-            </div>
-          </div>
-        </div>
+        <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">3. Cooperation, Coordination, and Dynamic Social Networks</h3>
+        <p style="margin-bottom:1.8rem;">
+          In this research focus, I explore mechanisms to promote cooperation and coordination
+          in social dilemmas, social network formation for prisoner's dilemma and coordination
+          games, the evolution of cooperation in dynamic networks, and the impact of social
+          identity on group interactions. I am particularly interested in how network topology
+          and link flexibility shape the emergence of prosocial norms.
+        </p>
 
-      <p style="font-size:0.95rem; max-width:720px; color:var(--warm-grey); margin-top:2rem;">
-        In addition to the three main areas above, I also explore various topics such as contest experiments,
-        social identity and incentives, charitable giving, behavioral nudges, and more recently the economics
-        of AI and human decision-making.
-      </p>
+        <p style="font-size:0.95rem; color:var(--warm-grey);">
+          In addition to the three main areas above, I also explore various topics such as contest experiments,
+          social identity and incentives, charitable giving, behavioral nudges, and more recently the economics
+          of AI and human decision-making.
+        </p>
+
       </div>
     </div>
   </section>
@@ -148,13 +112,6 @@
       if (!toggle.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
     });
 
-    function toggleArea(el) {
-      const isOpen = el.classList.contains('open');
-      // Close all
-      document.querySelectorAll('.research-area.open').forEach(a => a.classList.remove('open'));
-      // Open clicked if it was closed
-      if (!isOpen) el.classList.add('open');
-    }
   </script>
 
 </body>
