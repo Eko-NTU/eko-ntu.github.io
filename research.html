@@ -54,43 +54,130 @@
     <div class="section-inner">
       <h2 class="section-title">Main Research Themes</h2>
 
-      <div>
-
-        <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">1. Experimental Asset Markets and Finance</h3>
-        <p style="margin-bottom:1.8rem; text-align:justify;">
-          Within this research thrust, I examine topics such as insider trading regulations,
-          the interaction between social networks and trader behavior, the impact of consumption
-          smoothing on asset prices, dark pools, algorithmic trading, and social trading and
-          information sharing. A recurring question is how information structure and market
-          microstructure affect price efficiency and trader welfare.
-        </p>
-
-        <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">2. Experimental Market Design</h3>
-        <p style="margin-bottom:1.8rem; text-align:justify;">
-          In this research area, I investigate methods to encourage organ donation enrolment,
-          considering factors such as blood compatibility, transplant priority for donors,
-          incentive schemes such as transferable vouchers, family consent, and the relationship
-          between deceased- and living-kin organ donation. I also study how information provision
-          and priority rules jointly affect donation decisions and social welfare, as well as
-          repugnant transactions.
-        </p>
-
-        <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">3. Cooperation, Coordination, and Dynamic Social Networks</h3>
-        <p style="margin-bottom:1.8rem; text-align:justify;">
-          In this research focus, I explore mechanisms to promote cooperation and coordination
-          in social dilemmas, social network formation for prisoner's dilemma and coordination
-          games, the evolution of cooperation in dynamic networks, and the impact of social
-          identity on group interactions. I am particularly interested in how network topology
-          and link flexibility shape the emergence of prosocial norms.
-        </p>
-
-        <p style="font-size:0.95rem; color:var(--warm-grey); text-align:justify;">
-          In addition to the three main areas above, I also explore various topics such as contest experiments,
-          social identity and incentives, charitable giving, behavioral nudges, and more recently the economics
-          of AI and human decision-making.
-        </p>
-
+      <!-- Thrust 1 -->
+      <div class="research-thrust">
+        <div>
+          <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">1. Experimental Asset Markets and Finance</h3>
+          <p style="text-align:justify;">
+            Within this research thrust, I examine topics such as insider trading regulations,
+            the interaction between social networks and trader behavior, the impact of consumption
+            smoothing on asset prices, dark pools, algorithmic trading, and social trading and
+            information sharing. A recurring question is how information structure and market
+            microstructure affect price efficiency and trader welfare.
+          </p>
+        </div>
+        <div class="research-thrust-fig">
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" width="200" height="150">
+            <rect width="200" height="150" fill="#EAF0F6" rx="6"/>
+            <!-- Grid lines -->
+            <line x1="20" y1="30" x2="185" y2="30" stroke="#C9D8E8" stroke-width="0.5"/>
+            <line x1="20" y1="60" x2="185" y2="60" stroke="#C9D8E8" stroke-width="0.5"/>
+            <line x1="20" y1="90" x2="185" y2="90" stroke="#C9D8E8" stroke-width="0.5"/>
+            <!-- Area under price line -->
+            <polygon points="20,110 50,90 80,100 110,62 140,72 170,42 185,48 185,120 20,120"
+                     fill="#0C1A2E" opacity="0.06"/>
+            <!-- Price line -->
+            <polyline points="20,110 50,90 80,100 110,62 140,72 170,42 185,48"
+                      fill="none" stroke="#0C1A2E" stroke-width="2" stroke-linejoin="round" opacity="0.75"/>
+            <!-- Price dots -->
+            <circle cx="20"  cy="110" r="3" fill="#B8882E"/>
+            <circle cx="80"  cy="100" r="3" fill="#B8882E"/>
+            <circle cx="140" cy="72"  r="3" fill="#B8882E"/>
+            <circle cx="185" cy="48"  r="3" fill="#B8882E"/>
+            <!-- Trader network at bottom -->
+            <line x1="35" y1="138" x2="100" y2="135" stroke="#6B8CAE" stroke-width="1" opacity="0.6"/>
+            <line x1="100" y1="135" x2="165" y2="138" stroke="#6B8CAE" stroke-width="1" opacity="0.6"/>
+            <line x1="35" y1="138" x2="165" y2="138" stroke="#6B8CAE" stroke-width="0.6" opacity="0.3"/>
+            <circle cx="35"  cy="138" r="5"  fill="#1E3856" opacity="0.8"/>
+            <circle cx="100" cy="135" r="7"  fill="#0C1A2E" opacity="0.85"/>
+            <circle cx="165" cy="138" r="5"  fill="#1E3856" opacity="0.8"/>
+          </svg>
+        </div>
       </div>
+
+      <!-- Thrust 2 -->
+      <div class="research-thrust">
+        <div>
+          <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">2. Experimental Market Design</h3>
+          <p style="text-align:justify;">
+            In this research area, I investigate methods to encourage organ donation enrolment,
+            considering factors such as blood compatibility, transplant priority for donors,
+            incentive schemes such as transferable vouchers, family consent, and the relationship
+            between deceased- and living-kin organ donation. I also study how information provision
+            and priority rules jointly affect donation decisions and social welfare, as well as
+            repugnant transactions.
+          </p>
+        </div>
+        <div class="research-thrust-fig">
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" width="200" height="150">
+            <rect width="200" height="150" fill="#EAF0F6" rx="6"/>
+            <!-- Soft heart background -->
+            <path d="M100,118 C60,90 30,70 30,48 C30,32 42,22 55,22 C68,22 80,32 100,50 C120,32 132,22 145,22 C158,22 170,32 170,48 C170,70 140,90 100,118 Z"
+                  fill="#B8882E" opacity="0.07"/>
+            <!-- Donor nodes (left) -->
+            <circle cx="52" cy="40"  r="10" fill="#0C1A2E" opacity="0.75"/>
+            <circle cx="52" cy="75"  r="10" fill="#0C1A2E" opacity="0.75"/>
+            <circle cx="52" cy="110" r="10" fill="#0C1A2E" opacity="0.45"/>
+            <!-- Recipient nodes (right) -->
+            <circle cx="148" cy="40"  r="10" fill="#1E3856" opacity="0.75"/>
+            <circle cx="148" cy="75"  r="10" fill="#1E3856" opacity="0.75"/>
+            <circle cx="148" cy="110" r="10" fill="#1E3856" opacity="0.45"/>
+            <!-- Match lines (gold = matched) -->
+            <line x1="62" y1="40"  x2="138" y2="75"  stroke="#B8882E" stroke-width="1.8" opacity="0.8"/>
+            <line x1="62" y1="75"  x2="138" y2="40"  stroke="#B8882E" stroke-width="1.8" opacity="0.8"/>
+            <line x1="62" y1="110" x2="138" y2="110" stroke="#B8882E" stroke-width="1.8" opacity="0.5"/>
+            <!-- Labels -->
+            <text x="52"  y="136" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#5E5A54">Donors</text>
+            <text x="148" y="136" text-anchor="middle" font-size="8" font-family="sans-serif" fill="#5E5A54">Recipients</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Thrust 3 -->
+      <div class="research-thrust" style="margin-bottom:0;">
+        <div>
+          <h3 style="font-family:var(--font-display); font-size:1.15rem; font-weight:500; color:var(--navy); margin-bottom:0.5rem;">3. Cooperation, Coordination, and Dynamic Social Networks</h3>
+          <p style="text-align:justify;">
+            In this research focus, I explore mechanisms to promote cooperation and coordination
+            in social dilemmas, social network formation for prisoner's dilemma and coordination
+            games, the evolution of cooperation in dynamic networks, and the impact of social
+            identity on group interactions. I am particularly interested in how network topology
+            and link flexibility shape the emergence of prosocial norms.
+          </p>
+        </div>
+        <div class="research-thrust-fig">
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" width="200" height="150">
+            <rect width="200" height="150" fill="#EAF0F6" rx="6"/>
+            <!-- Edges -->
+            <line x1="100" y1="70" x2="52"  y2="35"  stroke="#B8882E" stroke-width="1.2" opacity="0.5"/>
+            <line x1="100" y1="70" x2="148" y2="35"  stroke="#B8882E" stroke-width="1.2" opacity="0.5"/>
+            <line x1="100" y1="70" x2="58"  y2="112" stroke="#B8882E" stroke-width="1.2" opacity="0.5"/>
+            <line x1="100" y1="70" x2="142" y2="112" stroke="#B8882E" stroke-width="1.2" opacity="0.5"/>
+            <line x1="52"  y1="35" x2="22"  y2="75"  stroke="#6B8CAE" stroke-width="0.8" opacity="0.45"/>
+            <line x1="148" y1="35" x2="178" y2="75"  stroke="#6B8CAE" stroke-width="0.8" opacity="0.45"/>
+            <line x1="58"  y1="112" x2="22" y2="75"  stroke="#6B8CAE" stroke-width="0.8" opacity="0.45"/>
+            <line x1="142" y1="112" x2="178" y2="75" stroke="#6B8CAE" stroke-width="0.8" opacity="0.45"/>
+            <line x1="52"  y1="35" x2="148" y2="35"  stroke="#6B8CAE" stroke-width="0.6" opacity="0.3"/>
+            <line x1="58"  y1="112" x2="142" y2="112" stroke="#6B8CAE" stroke-width="0.6" opacity="0.3"/>
+            <!-- Peripheral nodes -->
+            <circle cx="22"  cy="75"  r="6" fill="#6B8CAE" opacity="0.7"/>
+            <circle cx="178" cy="75"  r="6" fill="#6B8CAE" opacity="0.7"/>
+            <!-- Secondary nodes -->
+            <circle cx="52"  cy="35"  r="9" fill="#1E3856" opacity="0.75"/>
+            <circle cx="148" cy="35"  r="9" fill="#1E3856" opacity="0.75"/>
+            <circle cx="58"  cy="112" r="9" fill="#1E3856" opacity="0.75"/>
+            <circle cx="142" cy="112" r="9" fill="#1E3856" opacity="0.75"/>
+            <!-- Central hub -->
+            <circle cx="100" cy="70" r="15" fill="#0C1A2E" opacity="0.85"/>
+          </svg>
+        </div>
+      </div>
+
+      <p style="font-size:0.9rem; color:var(--warm-grey); text-align:justify; margin-top:1.8rem;">
+        In addition to the three main areas above, I also explore various topics such as contest experiments,
+        social identity and incentives, charitable giving, behavioral nudges, and more recently the economics
+        of AI and human decision-making.
+      </p>
     </div>
   </section>
 

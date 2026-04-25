@@ -34,7 +34,7 @@
 
 /* ── Reset ────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 15px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; font-size: 13.5px; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--font-body);
   background: var(--ivory);
@@ -653,6 +653,24 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   font-size: 0.96rem;
   color: var(--warm-grey);
   line-height: 1.75;
+}
+
+/* ── Research Thrust Layout ───────────────────────────────── */
+.research-thrust {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.research-thrust-fig {
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+@media (max-width: 680px) {
+  .research-thrust { grid-template-columns: 1fr; }
+  .research-thrust-fig { display: none; }
 }
 
 /* ── Working Papers ───────────────────────────────────────── */
