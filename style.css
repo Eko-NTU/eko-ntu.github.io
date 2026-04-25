@@ -658,15 +658,20 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 /* ── Research Thrust Layout ───────────────────────────────── */
 .research-thrust {
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 3fr 1fr;
   gap: 2rem;
   align-items: center;
   margin-bottom: 2rem;
 }
 .research-thrust-fig {
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
-  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(12,26,46,0.12);
+}
+.research-thrust-fig svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 @media (max-width: 680px) {
   .research-thrust { grid-template-columns: 1fr; }
