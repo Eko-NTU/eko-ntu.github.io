@@ -144,7 +144,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 /* ── Hero (Home only) ─────────────────────────────────────── */
 .hero {
   background: #EAF0F6;
-  padding: calc(var(--nav-h) + 3rem) 2rem 3rem;
+  padding: calc(var(--nav-h) + 1.8rem) 2rem 1.8rem;
   border-bottom: 1px solid #C9D8E8;
 }
 .hero-inner {
@@ -204,7 +204,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 /* ── Page Hero (inner pages) ──────────────────────────────── */
 .page-hero {
   background: #EAF0F6;
-  padding: calc(var(--nav-h) + 3rem) 2rem 3rem;
+  padding: calc(var(--nav-h) + 1.8rem) 2rem 1.8rem;
   border-bottom: 1px solid #C9D8E8;
 }
 .page-hero-inner {
@@ -239,7 +239,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 
 /* ── Section Base ─────────────────────────────────────────── */
 .section {
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
 }
 .section-alt {
   background: var(--cream);
@@ -276,8 +276,8 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   font-weight: 400;
   color: var(--navy);
   line-height: 1.2;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1.6rem;
+  padding-bottom: 0.7rem;
   border-bottom: 1px solid var(--border);
 }
 .section-navy .section-title {
@@ -289,7 +289,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 .about-grid {
   display: grid;
   grid-template-columns: 200px 1fr;
-  gap: 3.5rem;
+  gap: 2.5rem;
   align-items: start;
 }
 .about-photo {
@@ -326,7 +326,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-top: 1.6rem;
+  margin-top: 1.1rem;
 }
 .tag-link {
   display: inline-flex;
@@ -359,7 +359,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   gap: 0;
 }
 .pub-item {
-  padding: 1.3rem 0;
+  padding: 0.9rem 0;
   border-bottom: 1px solid var(--border-light);
   position: relative;
   transition: background var(--transition);
@@ -481,7 +481,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   font-size: 2.4rem;
   font-weight: 300;
   color: var(--navy);
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--border);
@@ -672,7 +672,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   gap: 0.6rem;
 }
 .wp-item {
-  padding: 1rem 1.2rem;
+  padding: 0.7rem 1rem;
   background: var(--white);
   border: 1px solid var(--border-light);
   border-radius: var(--radius);
@@ -862,12 +862,12 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   .nav-links a::after { display: none; }
   .nav-toggle { display: flex; }
 
-  .hero { padding: calc(var(--nav-h) + 2rem) 1.5rem 2rem; }
+  .hero { padding: calc(var(--nav-h) + 1.2rem) 1.5rem 1.5rem; }
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .about-photo, .about-photo-placeholder { width: 140px; height: 170px; }
   .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .section { padding: 3.5rem 1.5rem; }
-  .page-hero { padding: calc(var(--nav-h) + 2rem) 1.5rem 2.5rem; }
+  .section { padding: 2.5rem 1.5rem; }
+  .page-hero { padding: calc(var(--nav-h) + 1.2rem) 1.5rem 1.5rem; }
   .media-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
