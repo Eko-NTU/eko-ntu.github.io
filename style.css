@@ -34,12 +34,12 @@
 
 /* ── Reset ────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 17px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; font-size: 15px; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--font-body);
   background: var(--ivory);
   color: var(--charcoal);
-  line-height: 1.8;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; height: auto; display: block; }
@@ -144,7 +144,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 /* ── Hero (Home only) ─────────────────────────────────────── */
 .hero {
   background: #EAF0F6;
-  padding: calc(var(--nav-h) + 1.8rem) 2rem 1.8rem;
+  padding: calc(var(--nav-h) + 1.2rem) 2rem 1.2rem;
   border-bottom: 1px solid #C9D8E8;
 }
 .hero-inner {
@@ -204,7 +204,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 /* ── Page Hero (inner pages) ──────────────────────────────── */
 .page-hero {
   background: #EAF0F6;
-  padding: calc(var(--nav-h) + 1.8rem) 2rem 1.8rem;
+  padding: calc(var(--nav-h) + 1.2rem) 2rem 1.2rem;
   border-bottom: 1px solid #C9D8E8;
 }
 .page-hero-inner {
@@ -241,7 +241,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 
 /* ── Section Base ─────────────────────────────────────────── */
 .section {
-  padding: 3.5rem 2rem;
+  padding: 2.5rem 2rem;
 }
 .section-alt {
   background: var(--cream);
@@ -278,8 +278,8 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   font-weight: 400;
   color: var(--navy);
   line-height: 1.2;
-  margin-bottom: 1.6rem;
-  padding-bottom: 0.7rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
   text-align: center;
 }
@@ -320,8 +320,8 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   flex-shrink: 0;
 }
 .about-text p {
-  margin-bottom: 1rem;
-  font-size: 1.05rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
   color: var(--charcoal);
 }
 .about-text p:last-child { margin-bottom: 0; }
@@ -362,7 +362,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   gap: 0;
 }
 .pub-item {
-  padding: 0.9rem 0;
+  padding: 0.65rem 0;
   border-bottom: 1px solid var(--border-light);
   position: relative;
   transition: background var(--transition);
@@ -675,7 +675,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   gap: 0.6rem;
 }
 .wp-item {
-  padding: 0.7rem 1rem;
+  padding: 0.5rem 0.85rem;
   background: var(--white);
   border: 1px solid var(--border-light);
   border-radius: var(--radius);
@@ -865,12 +865,12 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   .nav-links a::after { display: none; }
   .nav-toggle { display: flex; }
 
-  .hero { padding: calc(var(--nav-h) + 1.2rem) 1.5rem 1.5rem; }
+  .hero { padding: calc(var(--nav-h) + 0.9rem) 1.2rem 1rem; }
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .about-photo, .about-photo-placeholder { width: 140px; height: 170px; }
   .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .section { padding: 2.5rem 1.5rem; }
-  .page-hero { padding: calc(var(--nav-h) + 1.2rem) 1.5rem 1.5rem; }
+  .section { padding: 1.8rem 1.2rem; }
+  .page-hero { padding: calc(var(--nav-h) + 0.9rem) 1.2rem 1rem; }
   .media-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
