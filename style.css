@@ -153,7 +153,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 }
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-size: clamp(1.65rem, 3.5vw, 2.6rem);
   font-weight: 300;
   line-height: 1.1;
   color: var(--navy);
@@ -231,7 +231,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 }
 .page-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.8rem);
   font-weight: 300;
   color: var(--navy);
   line-height: 1.15;
@@ -658,7 +658,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 /* ── Research Thrust Layout ───────────────────────────────── */
 .research-thrust {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 5fr 2fr;
   gap: 2rem;
   align-items: center;
   margin-bottom: 2rem;
@@ -668,7 +668,8 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(12,26,46,0.12);
 }
-.research-thrust-fig svg {
+.research-thrust-fig svg,
+.research-thrust-fig img {
   display: block;
   width: 100%;
   height: auto;
