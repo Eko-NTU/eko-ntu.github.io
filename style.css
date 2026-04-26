@@ -3,7 +3,7 @@
    Design: Warm Editorial Academic
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
 
 /* ── Variables ────────────────────────────────────────────── */
 :root {
@@ -22,9 +22,9 @@
   --border:      #DDD5C5;
   --border-light:#EDE8DF;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Source Serif 4', Georgia, serif;
-  --font-ui:      'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   --max-w:        1080px;
   --nav-h:        68px;
@@ -661,9 +661,11 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   grid-template-columns: 3fr 2fr;
   gap: 2rem;
   align-items: stretch;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
+  max-width: 780px;
 }
 .research-thrust-fig {
+  position: relative;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(12,26,46,0.12);
@@ -674,10 +676,12 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
   height: auto;
 }
 .research-thrust-fig img {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 @media (max-width: 680px) {
   .research-thrust { grid-template-columns: 1fr; }
