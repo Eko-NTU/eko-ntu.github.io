@@ -658,10 +658,10 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 /* ── Research Thrust Layout ───────────────────────────────── */
 .research-thrust {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 3fr 1.6fr;
   gap: 2rem;
   align-items: start;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto 5.5rem;
   max-width: 780px;
 }
 .research-thrust-fig {
