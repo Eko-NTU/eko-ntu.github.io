@@ -321,7 +321,7 @@ a:hover { color: var(--gold); text-decoration-color: var(--gold-bright); }
 }
 .about-text p {
   margin-bottom: 0.7rem;
-  font-size: 1.15rem;
+  font-size: 1.125rem;
   color: var(--charcoal);
 }
 .about-text p:last-child { margin-bottom: 0; }
