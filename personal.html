@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal photos of Yohanes Eko Riyanto — travel, family, and academic events." />
+  <title>Personal | Yohanes Eko Riyanto</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Album grid ── */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .album-card {
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 8px rgba(12,26,46,0.08);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      background: #fff;
+    }
+    .album-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(12,26,46,0.14);
+    }
+    .album-card.active {
+      border-color: var(--gold);
+    }
+    .album-cover {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .album-cover img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.4s;
+    }
+    .album-card:hover .album-cover img { transform: scale(1.04); }
+    .album-cover-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .album-badge {
+      position: absolute; bottom: 8px; right: 8px;
+      background: rgba(12,26,46,0.65);
+      color: #fff; font-size: 0.68rem; font-weight: 600;
+      padding: 2px 8px; border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+    .album-meta { padding: 0.7rem 0.9rem 0.8rem; }
+    .album-name {
+      margin: 0; font-size: 0.88rem; font-weight: 700;
+      color: var(--navy); letter-spacing: 0.1px;
+    }
+    .album-sub {
+      margin: 0.15rem 0 0; font-size: 0.75rem;
+      color: var(--warm-grey);
+    }
+
+    /* ── Expanded panel ── */
+    .album-expanded {
+      display: none;
+      border-top: 2px solid var(--gold);
+      padding-top: 1.4rem;
+      margin-bottom: 3rem;
+      animation: slideDown 0.28s ease;
+    }
+    .album-expanded.open { display: block; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .album-expanded-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+    .album-expanded-title {
+      font-size: 1rem; font-weight: 700; color: var(--navy);
+    }
+    .album-close-btn {
+      background: none; border: 1px solid var(--border-light);
+      cursor: pointer; font-size: 0.8rem; color: var(--warm-grey);
+      padding: 3px 10px; border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .album-close-btn:hover { background: var(--cream); }
+
+    /* ── Photo grid ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.6rem;
+    }
+    .photo-thumb {
+      aspect-ratio: 1; overflow: hidden;
+      border-radius: 5px; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .photo-thumb:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(12,26,46,0.18);
+    }
+    .photo-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(8,16,32,0.94);
+      z-index: 2000; align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img-wrap {
+      position: relative; max-width: 88vw; max-height: 88vh;
+    }
+    .lightbox-img-wrap img {
+      display: block; max-width: 88vw; max-height: 88vh;
+      object-fit: contain; border-radius: 4px;
+    }
+    .lightbox-close {
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      color: #fff; font-size: 1.8rem; cursor: pointer;
+      background: none; border: none; line-height: 1; opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      color: #fff; font-size: 2.2rem; cursor: pointer;
+      background: rgba(255,255,255,0.08); border: none;
+      padding: 0.4rem 0.9rem; border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-caption {
+      position: absolute; bottom: -2rem; left: 0; right: 0;
+      text-align: center; color: rgba(255,255,255,0.55);
+      font-size: 0.78rem;
+    }
+
+    /* ── Placeholder gradients ── */
+    .grad-travel    { background: linear-gradient(135deg,#f4a35a,#e07b39); }
+    .grad-family    { background: linear-gradient(135deg,#e8a0a0,#c26b6b); }
+    .grad-academic  { background: linear-gradient(135deg,#4a6fa5,#0C1A2E); }
+    .grad-singapore { background: linear-gradient(135deg,#52a07a,#2d6e50); }
+    .grad-hobbies   { background: linear-gradient(135deg,#8b6fb5,#5c3d8f); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="nav-monogram">YER</span>
+      </a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="working-papers.html">Working Papers</a></li>
+        <li><a href="personal.html" class="active">Personal</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Page Hero ── -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Yohanes Eko Riyanto</p>
+      <h1 class="page-hero-title">Personal</h1>
+    </div>
+  </header>
+
+  <!-- ── Gallery ── -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">Browse by album</p>
+      <h2 class="section-title">Photo Gallery</h2>
+
+      <!-- ── Album cards ── -->
+      <div class="album-grid">
+
+        <div class="album-card" id="card-travel" onclick="toggleAlbum('travel')">
+          <div class="album-cover grad-travel">
+            <div class="album-cover-placeholder">✈</div>
+            <span class="album-badge">Travel</span>
+          </div>
+          <div class="album-meta">
+            <p class="album-name">Travel</p>
+            <p class="album-sub">Around the world</p>
+          </div>
+        </div>
+
+        <div class="album-card" id="card-family" onclick="toggleAlbum('family')">
+          <div class="album-cover grad-family">
+            <div class="album-cover-placeholder">🏠</div>
+            <span class="album-badge">Family</span>
+          </div>
+          <div class="album-meta">
+            <p class="album-name">Family</p>
+            <p class="album-sub">Cherished moments</p>
+          </div>
+        </div>
+
+        <div class="album-card" id="card-academic" onclick="toggleAlbum('academic')">
+          <div class="album-cover grad-academic">
+            <div class="album-cover-placeholder">🎓</div>
+            <span class="album-badge">Academic Events</span>
+          </div>
+          <div class="album-meta">
+            <p class="album-name">Academic Events</p>
+            <p class="album-sub">Conferences &amp; workshops</p>
+          </div>
+        </div>
+
+        <div class="album-card" id="card-singapore" onclick="toggleAlbum('singapore')">
+          <div class="album-cover grad-singapore">
+            <div class="album-cover-placeholder">🦁</div>
+            <span class="album-badge">Singapore &amp; NTU</span>
+          </div>
+          <div class="album-meta">
+            <p class="album-name">Singapore &amp; NTU</p>
+            <p class="album-sub">Campus &amp; city life</p>
+          </div>
+        </div>
+
+        <div class="album-card" id="card-hobbies" onclick="toggleAlbum('hobbies')">
+          <div class="album-cover grad-hobbies">
+            <div class="album-cover-placeholder">🎨</div>
+            <span class="album-badge">Hobbies</span>
+          </div>
+          <div class="album-meta">
+            <p class="album-name">Hobbies</p>
+            <p class="album-sub">Interests &amp; leisure</p>
+          </div>
+        </div>
+
+      </div><!-- /.album-grid -->
+
+      <!-- ── Expanded panels ──
+           To populate an album: add <img> tags to the .photo-grid div.
+           Images should be placed in images/personal/<album-name>/
+           e.g. <img src="images/personal/travel/photo1.jpg" alt="..." />
+      -->
+
+      <div class="album-expanded" id="album-travel">
+        <div class="album-expanded-header">
+          <span class="album-expanded-title">Travel</span>
+          <button class="album-close-btn" onclick="closeAlbum('travel')">✕ Close</button>
+        </div>
+        <div class="photo-grid" id="photos-travel">
+          <!-- Add photos here, e.g.:
+          <div class="photo-thumb" onclick="openLightbox(this)">
+            <img src="images/personal/travel/photo1.jpg" alt="Travel photo" />
+          </div>
+          -->
+          <div class="photo-thumb" style="cursor:default;">
+            <div class="photo-placeholder grad-travel" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/travel/</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="album-expanded" id="album-family">
+        <div class="album-expanded-header">
+          <span class="album-expanded-title">Family</span>
+          <button class="album-close-btn" onclick="closeAlbum('family')">✕ Close</button>
+        </div>
+        <div class="photo-grid" id="photos-family">
+          <div class="photo-thumb" style="cursor:default;">
+            <div class="photo-placeholder grad-family" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/family/</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="album-expanded" id="album-academic">
+        <div class="album-expanded-header">
+          <span class="album-expanded-title">Academic Events</span>
+          <button class="album-close-btn" onclick="closeAlbum('academic')">✕ Close</button>
+        </div>
+        <div class="photo-grid" id="photos-academic">
+          <div class="photo-thumb" style="cursor:default;">
+            <div class="photo-placeholder grad-academic" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/academic/</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="album-expanded" id="album-singapore">
+        <div class="album-expanded-header">
+          <span class="album-expanded-title">Singapore &amp; NTU</span>
+          <button class="album-close-btn" onclick="closeAlbum('singapore')">✕ Close</button>
+        </div>
+        <div class="photo-grid" id="photos-singapore">
+          <div class="photo-thumb" style="cursor:default;">
+            <div class="photo-placeholder grad-singapore" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/singapore/</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="album-expanded" id="album-hobbies">
+        <div class="album-expanded-header">
+          <span class="album-expanded-title">Hobbies</span>
+          <button class="album-close-btn" onclick="closeAlbum('hobbies')">✕ Close</button>
+        </div>
+        <div class="photo-grid" id="photos-hobbies">
+          <div class="photo-thumb" style="cursor:default;">
+            <div class="photo-placeholder grad-hobbies" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/hobbies/</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Lightbox ── -->
+  <div class="lightbox" id="lightbox" onclick="handleLightboxClick(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#8249;</button>
+    <div class="lightbox-img-wrap">
+      <img id="lightbox-img" src="" alt="" />
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">&#8250;</button>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer" style="background:var(--navy);">
+    <p>© 2025 Yohanes Eko Riyanto &nbsp;·&nbsp; Nanyang Technological University, Singapore</p>
+  </footer>
+
+  <script>
+    // ── Navbar ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
+    });
+
+    // ── Album expand/collapse ──
+    let currentAlbum = null;
+    function toggleAlbum(id) {
+      const panel = document.getElementById('album-' + id);
+      const card  = document.getElementById('card-' + id);
+      if (currentAlbum && currentAlbum !== id) {
+        document.getElementById('album-' + currentAlbum).classList.remove('open');
+        document.getElementById('card-' + currentAlbum).classList.remove('active');
+      }
+      const isOpen = panel.classList.contains('open');
+      panel.classList.toggle('open', !isOpen);
+      card.classList.toggle('active', !isOpen);
+      currentAlbum = isOpen ? null : id;
+      if (!isOpen) {
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
+    }
+    function closeAlbum(id) {
+      document.getElementById('album-' + id).classList.remove('open');
+      document.getElementById('card-' + id).classList.remove('active');
+      if (currentAlbum === id) currentAlbum = null;
+    }
+
+    // ── Lightbox ──
+    let lightboxImages = [];
+    let lightboxIndex  = 0;
+
+    function openLightbox(thumb) {
+      const img     = thumb.querySelector('img');
+      const grid    = thumb.closest('.photo-grid');
+      lightboxImages = Array.from(grid.querySelectorAll('.photo-thumb img'));
+      lightboxIndex  = lightboxImages.indexOf(img);
+      showLightboxImage();
+      document.getElementById('lightbox').classList.add('open');
+      document.addEventListener('keydown', lightboxKeyHandler);
+    }
+    function showLightboxImage() {
+      const img = lightboxImages[lightboxIndex];
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-caption').textContent =
+        img.alt ? img.alt + '  (' + (lightboxIndex + 1) + ' / ' + lightboxImages.length + ')' :
+                  (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.removeEventListener('keydown', lightboxKeyHandler);
+    }
+    function lightboxNav(dir) {
+      lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+      showLightboxImage();
+    }
+    function handleLightboxClick(e) {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+    function lightboxKeyHandler(e) {
+      if (e.key === 'ArrowRight') lightboxNav(1);
+      if (e.key === 'ArrowLeft')  lightboxNav(-1);
+      if (e.key === 'Escape')     closeLightbox();
+    }
+  </script>
+
+  <!-- Start of StatCounter Code -->
+  <script type="text/javascript">
+    var sc_project=3579013;
+    var sc_invisible=1;
+    var sc_security="729aae5e";
+  </script>
+  <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+  <noscript><div class="statcounter"><a title="web analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/3579013/0/729aae5e/1/" alt="web analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+  <!-- End of StatCounter Code -->
+
+</body>
+</html>
