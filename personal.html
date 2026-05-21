@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal photos of Yohanes Eko Riyanto — travel, family, and academic events." />
+  <meta name="description" content="Personal photos of Yohanes Eko Riyanto." />
   <title>Personal | Yohanes Eko Riyanto</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── Album grid ── */
     .album-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 0.5rem;
     }
     .album-card {
       cursor: pointer;
@@ -23,152 +23,197 @@
       transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
       background: #fff;
     }
-    .album-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(12,26,46,0.14);
-    }
-    .album-card.active {
-      border-color: var(--gold);
-    }
+    .album-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(12,26,46,0.14); }
+    .album-card.active { border-color: var(--gold); }
     .album-cover {
-      position: relative;
-      aspect-ratio: 4/3;
-      overflow: hidden;
+      position: relative; aspect-ratio: 4/3; overflow: hidden;
     }
-    .album-cover img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform 0.4s;
-    }
-    .album-card:hover .album-cover img { transform: scale(1.04); }
+    .album-cover img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
+    .album-card:hover .album-cover img { transform:scale(1.04); }
     .album-cover-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem;
+      width:100%; height:100%; display:flex; align-items:center;
+      justify-content:center; font-size:2.8rem;
     }
     .album-badge {
-      position: absolute; bottom: 8px; right: 8px;
-      background: rgba(12,26,46,0.65);
-      color: #fff; font-size: 0.68rem; font-weight: 600;
-      padding: 2px 8px; border-radius: 20px;
-      letter-spacing: 0.3px;
+      position:absolute; bottom:8px; right:8px;
+      background:rgba(12,26,46,0.65); color:#fff;
+      font-size:0.68rem; font-weight:600; padding:2px 8px;
+      border-radius:20px;
     }
-    .album-meta { padding: 0.7rem 0.9rem 0.8rem; }
-    .album-name {
-      margin: 0; font-size: 0.88rem; font-weight: 700;
-      color: var(--navy); letter-spacing: 0.1px;
-    }
-    .album-sub {
-      margin: 0.15rem 0 0; font-size: 0.75rem;
-      color: var(--warm-grey);
-    }
+    .album-meta { padding:0.65rem 0.85rem 0.75rem; }
+    .album-name { margin:0; font-size:0.88rem; font-weight:700; color:var(--navy); }
+    .album-sub  { margin:0.12rem 0 0; font-size:0.74rem; color:var(--warm-grey); }
 
-    /* ── Expanded panel ── */
-    .album-expanded {
-      display: none;
-      border-top: 2px solid var(--gold);
-      padding-top: 1.4rem;
-      margin-bottom: 3rem;
-      animation: slideDown 0.28s ease;
+    /* ── Expanded panels (shared) ── */
+    .gallery-panel {
+      display:none; margin-top:1.8rem; margin-bottom:2.5rem;
+      border-top:2px solid var(--gold); padding-top:1.3rem;
+      animation:slideDown 0.25s ease;
     }
-    .album-expanded.open { display: block; }
+    .gallery-panel.open { display:block; }
     @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity:0; transform:translateY(-8px); }
+      to   { opacity:1; transform:translateY(0); }
     }
-    .album-expanded-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1.2rem;
+    .panel-header {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:1.1rem;
     }
-    .album-expanded-title {
-      font-size: 1rem; font-weight: 700; color: var(--navy);
+    .panel-title { font-size:0.95rem; font-weight:700; color:var(--navy); }
+    .panel-close {
+      background:none; border:1px solid var(--border-light);
+      cursor:pointer; font-size:0.78rem; color:var(--warm-grey);
+      padding:3px 10px; border-radius:4px; transition:background 0.15s;
     }
-    .album-close-btn {
-      background: none; border: 1px solid var(--border-light);
-      cursor: pointer; font-size: 0.8rem; color: var(--warm-grey);
-      padding: 3px 10px; border-radius: 4px;
-      transition: background 0.15s;
+    .panel-close:hover { background:var(--cream); }
+
+    /* ── Sub-album grid ── */
+    .subalbum-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(155px, 1fr));
+      gap:1rem;
     }
-    .album-close-btn:hover { background: var(--cream); }
+    .subalbum-card {
+      cursor:pointer; border-radius:7px; overflow:hidden;
+      border:2px solid transparent;
+      box-shadow:0 1px 6px rgba(12,26,46,0.08);
+      background:#fff; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .subalbum-card:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(12,26,46,0.13); }
+    .subalbum-card.active { border-color:var(--gold); }
+    .subalbum-cover {
+      aspect-ratio:4/3; overflow:hidden; position:relative;
+    }
+    .subalbum-cover img { width:100%; height:100%; object-fit:cover; display:block; }
+    .subalbum-cover-placeholder {
+      width:100%; height:100%; display:flex; align-items:center;
+      justify-content:center; font-size:1.6rem;
+    }
+    .subalbum-meta { padding:0.5rem 0.7rem 0.6rem; }
+    .subalbum-name { margin:0; font-size:0.82rem; font-weight:700; color:var(--navy); }
+    .subalbum-count { margin:0.1rem 0 0; font-size:0.72rem; color:var(--warm-grey); }
 
     /* ── Photo grid ── */
     .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 0.6rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(155px, 1fr));
+      gap:0.55rem;
     }
     .photo-thumb {
-      aspect-ratio: 1; overflow: hidden;
-      border-radius: 5px; cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      aspect-ratio:1; overflow:hidden; border-radius:5px;
+      cursor:pointer; transition:transform 0.2s, box-shadow 0.2s;
     }
-    .photo-thumb:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 12px rgba(12,26,46,0.18);
-    }
-    .photo-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-    }
-    .photo-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem; color: rgba(255,255,255,0.6);
-    }
+    .photo-thumb:hover { transform:scale(1.03); box-shadow:0 4px 12px rgba(12,26,46,0.18); }
+    .photo-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
 
     /* ── Lightbox ── */
     .lightbox {
-      display: none; position: fixed; inset: 0;
-      background: rgba(8,16,32,0.94);
-      z-index: 2000; align-items: center; justify-content: center;
+      display:none; position:fixed; inset:0;
+      background:rgba(8,16,32,0.94); z-index:2000;
+      align-items:center; justify-content:center;
     }
-    .lightbox.open { display: flex; }
-    .lightbox-img-wrap {
-      position: relative; max-width: 88vw; max-height: 88vh;
-    }
-    .lightbox-img-wrap img {
-      display: block; max-width: 88vw; max-height: 88vh;
-      object-fit: contain; border-radius: 4px;
-    }
+    .lightbox.open { display:flex; }
+    .lightbox-img-wrap { position:relative; max-width:88vw; max-height:88vh; }
+    .lightbox-img-wrap img { display:block; max-width:88vw; max-height:88vh; object-fit:contain; border-radius:4px; }
     .lightbox-close {
-      position: absolute; top: 1.2rem; right: 1.5rem;
-      color: #fff; font-size: 1.8rem; cursor: pointer;
-      background: none; border: none; line-height: 1; opacity: 0.8;
-      transition: opacity 0.15s;
+      position:absolute; top:1.2rem; right:1.5rem;
+      color:#fff; font-size:1.8rem; cursor:pointer;
+      background:none; border:none; opacity:0.8; transition:opacity 0.15s;
     }
-    .lightbox-close:hover { opacity: 1; }
+    .lightbox-close:hover { opacity:1; }
     .lightbox-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      color: #fff; font-size: 2.2rem; cursor: pointer;
-      background: rgba(255,255,255,0.08); border: none;
-      padding: 0.4rem 0.9rem; border-radius: 4px;
-      transition: background 0.15s;
+      position:absolute; top:50%; transform:translateY(-50%);
+      color:#fff; font-size:2.2rem; cursor:pointer;
+      background:rgba(255,255,255,0.08); border:none;
+      padding:0.4rem 0.9rem; border-radius:4px; transition:background 0.15s;
     }
-    .lightbox-nav:hover { background: rgba(255,255,255,0.18); }
-    .lightbox-prev { left: 1rem; }
-    .lightbox-next { right: 1rem; }
+    .lightbox-nav:hover { background:rgba(255,255,255,0.18); }
+    .lightbox-prev { left:1rem; }
+    .lightbox-next { right:1rem; }
     .lightbox-caption {
-      position: absolute; bottom: -2rem; left: 0; right: 0;
-      text-align: center; color: rgba(255,255,255,0.55);
-      font-size: 0.78rem;
+      position:absolute; bottom:-2rem; left:0; right:0;
+      text-align:center; color:rgba(255,255,255,0.5); font-size:0.78rem;
     }
 
     /* ── Placeholder gradients ── */
-    .grad-travel    { background: linear-gradient(135deg,#f4a35a,#e07b39); }
-    .grad-family    { background: linear-gradient(135deg,#e8a0a0,#c26b6b); }
-    .grad-academic  { background: linear-gradient(135deg,#4a6fa5,#0C1A2E); }
-    .grad-singapore { background: linear-gradient(135deg,#52a07a,#2d6e50); }
-    .grad-hobbies   { background: linear-gradient(135deg,#8b6fb5,#5c3d8f); }
+    .grad-travel    { background:linear-gradient(135deg,#f4a35a,#e07b39); }
+    .grad-family    { background:linear-gradient(135deg,#e8a0a0,#c26b6b); }
+    .grad-academic  { background:linear-gradient(135deg,#4a6fa5,#0C1A2E); }
+    .grad-singapore { background:linear-gradient(135deg,#52a07a,#2d6e50); }
+    .grad-hobbies   { background:linear-gradient(135deg,#8b6fb5,#5c3d8f); }
+
+    .empty-note {
+      padding:1.8rem; text-align:center;
+      color:var(--warm-grey); font-size:0.85rem;
+      border:1px dashed var(--border-light); border-radius:6px;
+    }
   </style>
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     PHOTO GALLERY CONFIGURATION
+     ───────────────────────────
+     Edit this block to add photos and sub-albums.
+
+     Structure:
+       ALBUMS  →  array of top-level albums (Travel, Family, …)
+         subAlbums  →  array of sub-albums inside each album (Europe 2023, …)
+           photos   →  array of photos inside each sub-album
+
+     Photo paths are relative to the site root.
+     Example path: "images/personal/travel/europe-2023/photo1.jpg"
+
+     To set an album/sub-album cover image, add a "cover" field.
+     If omitted, the first photo is used; if no photos, the emoji icon shows.
+═══════════════════════════════════════════════════════════════════════════ -->
+<script>
+const ALBUMS = [
+  {
+    id: "travel", name: "Travel", icon: "✈",
+    gradient: "grad-travel", desc: "Around the world",
+    subAlbums: [
+      // Example — uncomment and edit to add a sub-album:
+      // {
+      //   id: "europe-2023", name: "Europe 2023",
+      //   cover: "images/personal/travel/europe-2023/cover.jpg",
+      //   photos: [
+      //     { src: "images/personal/travel/europe-2023/paris.jpg",     caption: "Paris" },
+      //     { src: "images/personal/travel/europe-2023/amsterdam.jpg", caption: "Amsterdam" },
+      //   ]
+      // },
+    ]
+  },
+  {
+    id: "family", name: "Family", icon: "🏠",
+    gradient: "grad-family", desc: "Cherished moments",
+    subAlbums: []
+  },
+  {
+    id: "academic", name: "Academic Events", icon: "🎓",
+    gradient: "grad-academic", desc: "Conferences & workshops",
+    subAlbums: []
+  },
+  {
+    id: "singapore", name: "Singapore & NTU", icon: "🦁",
+    gradient: "grad-singapore", desc: "Campus & city life",
+    subAlbums: []
+  },
+  {
+    id: "hobbies", name: "Hobbies", icon: "🎨",
+    gradient: "grad-hobbies", desc: "Interests & leisure",
+    subAlbums: []
+  }
+];
+</script>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     END CONFIGURATION
+═══════════════════════════════════════════════════════════════════════════ -->
+
   <!-- ── Navigation ── -->
   <nav class="nav" id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <span class="nav-monogram">YER</span>
-      </a>
+      <a href="index.html" class="nav-brand"><span class="nav-monogram">YER</span></a>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
@@ -196,142 +241,31 @@
       <p class="section-label">Browse by album</p>
       <h2 class="section-title">Photo Gallery</h2>
 
-      <!-- ── Album cards ── -->
-      <div class="album-grid">
+      <!-- Album cards (rendered by JS) -->
+      <div class="album-grid" id="album-grid"></div>
 
-        <div class="album-card" id="card-travel" onclick="toggleAlbum('travel')">
-          <div class="album-cover grad-travel">
-            <div class="album-cover-placeholder">✈</div>
-            <span class="album-badge">Travel</span>
-          </div>
-          <div class="album-meta">
-            <p class="album-name">Travel</p>
-            <p class="album-sub">Around the world</p>
-          </div>
+      <!-- Sub-album panel (rendered by JS) -->
+      <div class="gallery-panel" id="subalbum-panel">
+        <div class="panel-header">
+          <span class="panel-title" id="subalbum-panel-title"></span>
+          <button class="panel-close" onclick="closeSubalbumPanel()">✕ Close</button>
         </div>
-
-        <div class="album-card" id="card-family" onclick="toggleAlbum('family')">
-          <div class="album-cover grad-family">
-            <div class="album-cover-placeholder">🏠</div>
-            <span class="album-badge">Family</span>
-          </div>
-          <div class="album-meta">
-            <p class="album-name">Family</p>
-            <p class="album-sub">Cherished moments</p>
-          </div>
-        </div>
-
-        <div class="album-card" id="card-academic" onclick="toggleAlbum('academic')">
-          <div class="album-cover grad-academic">
-            <div class="album-cover-placeholder">🎓</div>
-            <span class="album-badge">Academic Events</span>
-          </div>
-          <div class="album-meta">
-            <p class="album-name">Academic Events</p>
-            <p class="album-sub">Conferences &amp; workshops</p>
-          </div>
-        </div>
-
-        <div class="album-card" id="card-singapore" onclick="toggleAlbum('singapore')">
-          <div class="album-cover grad-singapore">
-            <div class="album-cover-placeholder">🦁</div>
-            <span class="album-badge">Singapore &amp; NTU</span>
-          </div>
-          <div class="album-meta">
-            <p class="album-name">Singapore &amp; NTU</p>
-            <p class="album-sub">Campus &amp; city life</p>
-          </div>
-        </div>
-
-        <div class="album-card" id="card-hobbies" onclick="toggleAlbum('hobbies')">
-          <div class="album-cover grad-hobbies">
-            <div class="album-cover-placeholder">🎨</div>
-            <span class="album-badge">Hobbies</span>
-          </div>
-          <div class="album-meta">
-            <p class="album-name">Hobbies</p>
-            <p class="album-sub">Interests &amp; leisure</p>
-          </div>
-        </div>
-
-      </div><!-- /.album-grid -->
-
-      <!-- ── Expanded panels ──
-           To populate an album: add <img> tags to the .photo-grid div.
-           Images should be placed in images/personal/<album-name>/
-           e.g. <img src="images/personal/travel/photo1.jpg" alt="..." />
-      -->
-
-      <div class="album-expanded" id="album-travel">
-        <div class="album-expanded-header">
-          <span class="album-expanded-title">Travel</span>
-          <button class="album-close-btn" onclick="closeAlbum('travel')">✕ Close</button>
-        </div>
-        <div class="photo-grid" id="photos-travel">
-          <!-- Add photos here, e.g.:
-          <div class="photo-thumb" onclick="openLightbox(this)">
-            <img src="images/personal/travel/photo1.jpg" alt="Travel photo" />
-          </div>
-          -->
-          <div class="photo-thumb" style="cursor:default;">
-            <div class="photo-placeholder grad-travel" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/travel/</div>
-          </div>
-        </div>
+        <div class="subalbum-grid" id="subalbum-grid"></div>
       </div>
 
-      <div class="album-expanded" id="album-family">
-        <div class="album-expanded-header">
-          <span class="album-expanded-title">Family</span>
-          <button class="album-close-btn" onclick="closeAlbum('family')">✕ Close</button>
+      <!-- Photo panel (rendered by JS) -->
+      <div class="gallery-panel" id="photo-panel">
+        <div class="panel-header">
+          <span class="panel-title" id="photo-panel-title"></span>
+          <button class="panel-close" onclick="closePhotoPanel()">✕ Close</button>
         </div>
-        <div class="photo-grid" id="photos-family">
-          <div class="photo-thumb" style="cursor:default;">
-            <div class="photo-placeholder grad-family" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/family/</div>
-          </div>
-        </div>
+        <div class="photo-grid" id="photo-grid"></div>
       </div>
-
-      <div class="album-expanded" id="album-academic">
-        <div class="album-expanded-header">
-          <span class="album-expanded-title">Academic Events</span>
-          <button class="album-close-btn" onclick="closeAlbum('academic')">✕ Close</button>
-        </div>
-        <div class="photo-grid" id="photos-academic">
-          <div class="photo-thumb" style="cursor:default;">
-            <div class="photo-placeholder grad-academic" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/academic/</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="album-expanded" id="album-singapore">
-        <div class="album-expanded-header">
-          <span class="album-expanded-title">Singapore &amp; NTU</span>
-          <button class="album-close-btn" onclick="closeAlbum('singapore')">✕ Close</button>
-        </div>
-        <div class="photo-grid" id="photos-singapore">
-          <div class="photo-thumb" style="cursor:default;">
-            <div class="photo-placeholder grad-singapore" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/singapore/</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="album-expanded" id="album-hobbies">
-        <div class="album-expanded-header">
-          <span class="album-expanded-title">Hobbies</span>
-          <button class="album-close-btn" onclick="closeAlbum('hobbies')">✕ Close</button>
-        </div>
-        <div class="photo-grid" id="photos-hobbies">
-          <div class="photo-thumb" style="cursor:default;">
-            <div class="photo-placeholder grad-hobbies" style="border-radius:5px; aspect-ratio:1; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:0.8rem; text-align:center; padding:1rem;">Add photos to<br>images/personal/hobbies/</div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- ── Lightbox ── -->
-  <div class="lightbox" id="lightbox" onclick="handleLightboxClick(event)">
+  <div class="lightbox" id="lightbox" onclick="handleLightboxBg(event)">
     <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
     <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#8249;</button>
     <div class="lightbox-img-wrap">
@@ -349,9 +283,7 @@
   <script>
     // ── Navbar ──
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
     const toggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
     toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
@@ -359,72 +291,152 @@
       if (!toggle.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
     });
 
-    // ── Album expand/collapse ──
-    let currentAlbum = null;
-    function toggleAlbum(id) {
-      const panel = document.getElementById('album-' + id);
-      const card  = document.getElementById('card-' + id);
-      if (currentAlbum && currentAlbum !== id) {
-        document.getElementById('album-' + currentAlbum).classList.remove('open');
-        document.getElementById('card-' + currentAlbum).classList.remove('active');
-      }
-      const isOpen = panel.classList.contains('open');
-      panel.classList.toggle('open', !isOpen);
-      card.classList.toggle('active', !isOpen);
-      currentAlbum = isOpen ? null : id;
-      if (!isOpen) {
-        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
-      }
+    // ── State ──
+    let activeAlbumId    = null;
+    let activeSubalbumId = null;
+    let lightboxPhotos   = [];
+    let lightboxIndex    = 0;
+
+    // ── Render album cards ──
+    function renderAlbums() {
+      const grid = document.getElementById('album-grid');
+      grid.innerHTML = ALBUMS.map(a => {
+        const count = a.subAlbums.reduce((n, s) => n + s.photos.length, 0);
+        const coverSrc = a.subAlbums.length > 0 && a.subAlbums[0].cover
+          ? a.subAlbums[0].cover
+          : (a.subAlbums.length > 0 && a.subAlbums[0].photos.length > 0
+              ? a.subAlbums[0].photos[0].src : null);
+        const coverHtml = coverSrc
+          ? `<img src="${coverSrc}" alt="${a.name}" />`
+          : `<div class="album-cover-placeholder ${a.gradient}">${a.icon}</div>`;
+        const badge = a.subAlbums.length > 0
+          ? `<span class="album-badge">${a.subAlbums.length} album${a.subAlbums.length > 1 ? 's' : ''}${count ? ' · ' + count + ' photos' : ''}</span>`
+          : '';
+        return `
+          <div class="album-card" id="card-${a.id}" onclick="toggleAlbum('${a.id}')">
+            <div class="album-cover">${coverHtml}${badge}</div>
+            <div class="album-meta">
+              <p class="album-name">${a.name}</p>
+              <p class="album-sub">${a.desc}</p>
+            </div>
+          </div>`;
+      }).join('');
     }
-    function closeAlbum(id) {
-      document.getElementById('album-' + id).classList.remove('open');
-      document.getElementById('card-' + id).classList.remove('active');
-      if (currentAlbum === id) currentAlbum = null;
+
+    // ── Toggle album → show sub-albums ──
+    function toggleAlbum(id) {
+      const album = ALBUMS.find(a => a.id === id);
+      const panel = document.getElementById('subalbum-panel');
+
+      if (activeAlbumId === id && panel.classList.contains('open')) {
+        closeSubalbumPanel(); return;
+      }
+      // deactivate previous
+      if (activeAlbumId) document.getElementById('card-' + activeAlbumId)?.classList.remove('active');
+      closePhotoPanel();
+
+      activeAlbumId = id;
+      document.getElementById('card-' + id).classList.add('active');
+      document.getElementById('subalbum-panel-title').textContent = album.name;
+
+      const grid = document.getElementById('subalbum-grid');
+      if (album.subAlbums.length === 0) {
+        grid.innerHTML = `<div class="empty-note" style="grid-column:1/-1;">No sub-albums yet. Add photos via the config block at the top of personal.html.</div>`;
+      } else {
+        grid.innerHTML = album.subAlbums.map(s => {
+          const coverSrc = s.cover || (s.photos.length > 0 ? s.photos[0].src : null);
+          const coverHtml = coverSrc
+            ? `<img src="${coverSrc}" alt="${s.name}" />`
+            : `<div class="subalbum-cover-placeholder ${album.gradient}">📷</div>`;
+          return `
+            <div class="subalbum-card" id="subcard-${s.id}" onclick="openSubalbum('${album.id}','${s.id}')">
+              <div class="subalbum-cover">${coverHtml}</div>
+              <div class="subalbum-meta">
+                <p class="subalbum-name">${s.name}</p>
+                <p class="subalbum-count">${s.photos.length} photo${s.photos.length !== 1 ? 's' : ''}</p>
+              </div>
+            </div>`;
+        }).join('');
+      }
+      panel.classList.add('open');
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    }
+
+    // ── Open sub-album → show photos ──
+    function openSubalbum(albumId, subId) {
+      const album  = ALBUMS.find(a => a.id === albumId);
+      const sub    = album.subAlbums.find(s => s.id === subId);
+      const panel  = document.getElementById('photo-panel');
+
+      if (activeSubalbumId) document.getElementById('subcard-' + activeSubalbumId)?.classList.remove('active');
+      activeSubalbumId = subId;
+      document.getElementById('subcard-' + subId)?.classList.add('active');
+      document.getElementById('photo-panel-title').textContent = album.name + '  ›  ' + sub.name;
+
+      const grid = document.getElementById('photo-grid');
+      if (sub.photos.length === 0) {
+        grid.innerHTML = `<div class="empty-note" style="grid-column:1/-1;">No photos yet.</div>`;
+      } else {
+        grid.innerHTML = sub.photos.map((p, i) =>
+          `<div class="photo-thumb" onclick="openLightbox('${albumId}','${subId}',${i})">
+             <img src="${p.src}" alt="${p.caption || ''}" loading="lazy" />
+           </div>`
+        ).join('');
+      }
+      panel.classList.add('open');
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    }
+
+    function closeSubalbumPanel() {
+      document.getElementById('subalbum-panel').classList.remove('open');
+      document.getElementById('photo-panel').classList.remove('open');
+      if (activeAlbumId) document.getElementById('card-' + activeAlbumId)?.classList.remove('active');
+      activeAlbumId = null; activeSubalbumId = null;
+    }
+    function closePhotoPanel() {
+      document.getElementById('photo-panel').classList.remove('open');
+      if (activeSubalbumId) document.getElementById('subcard-' + activeSubalbumId)?.classList.remove('active');
+      activeSubalbumId = null;
     }
 
     // ── Lightbox ──
-    let lightboxImages = [];
-    let lightboxIndex  = 0;
-
-    function openLightbox(thumb) {
-      const img     = thumb.querySelector('img');
-      const grid    = thumb.closest('.photo-grid');
-      lightboxImages = Array.from(grid.querySelectorAll('.photo-thumb img'));
-      lightboxIndex  = lightboxImages.indexOf(img);
+    function openLightbox(albumId, subId, index) {
+      const album = ALBUMS.find(a => a.id === albumId);
+      const sub   = album.subAlbums.find(s => s.id === subId);
+      lightboxPhotos = sub.photos;
+      lightboxIndex  = index;
       showLightboxImage();
       document.getElementById('lightbox').classList.add('open');
       document.addEventListener('keydown', lightboxKeyHandler);
     }
     function showLightboxImage() {
-      const img = lightboxImages[lightboxIndex];
-      document.getElementById('lightbox-img').src = img.src;
+      const p = lightboxPhotos[lightboxIndex];
+      document.getElementById('lightbox-img').src = p.src;
       document.getElementById('lightbox-caption').textContent =
-        img.alt ? img.alt + '  (' + (lightboxIndex + 1) + ' / ' + lightboxImages.length + ')' :
-                  (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+        (p.caption ? p.caption + '  ' : '') + '(' + (lightboxIndex + 1) + ' / ' + lightboxPhotos.length + ')';
     }
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.removeEventListener('keydown', lightboxKeyHandler);
     }
     function lightboxNav(dir) {
-      lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+      lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length;
       showLightboxImage();
     }
-    function handleLightboxClick(e) {
-      if (e.target === document.getElementById('lightbox')) closeLightbox();
-    }
+    function handleLightboxBg(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
     function lightboxKeyHandler(e) {
       if (e.key === 'ArrowRight') lightboxNav(1);
       if (e.key === 'ArrowLeft')  lightboxNav(-1);
       if (e.key === 'Escape')     closeLightbox();
     }
+
+    // ── Init ──
+    renderAlbums();
   </script>
 
   <!-- Start of StatCounter Code -->
   <script type="text/javascript">
-    var sc_project=3579013;
-    var sc_invisible=1;
-    var sc_security="729aae5e";
+    var sc_project=3579013; var sc_invisible=1; var sc_security="729aae5e";
   </script>
   <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
   <noscript><div class="statcounter"><a title="web analytics" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/3579013/0/729aae5e/1/" alt="web analytics" referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
