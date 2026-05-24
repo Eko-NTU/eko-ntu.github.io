@@ -29,6 +29,33 @@
       transition: color var(--transition);
     }
     #more-about-btn:hover { color: var(--navy); }
+
+    /* ── Photo column + social icons ── */
+    .about-photo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .about-social-icons {
+      display: flex;
+      gap: 0.9rem;
+      justify-content: center;
+    }
+    .about-social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--warm-grey);
+      text-decoration: none;
+      transition: color var(--transition), transform var(--transition);
+    }
+    .about-social-icons a:hover {
+      color: var(--gold);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .about-social-icons svg { width: 20px; height: 20px; }
   </style>
 </head>
 <body>
@@ -65,11 +92,27 @@
       <p class="section-label">About</p>
       <h2 class="section-title">Welcome</h2>
       <div class="about-grid">
-        <img src="images/profile_composite.png" alt="Yohanes Eko Riyanto" class="about-photo" onerror="this.outerHTML='<div class=&quot;about-photo-placeholder&quot;>YER</div>'" />
+        <div class="about-photo-col">
+          <img src="images/profile_composite.png" alt="Yohanes Eko Riyanto" class="about-photo" onerror="this.outerHTML='<div class=&quot;about-photo-placeholder&quot;>YER</div>'" />
+          <div class="about-social-icons">
+            <!-- Email -->
+            <a href="mailto:yeriyanto@ntu.edu.sg" title="Email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/shutter_flick/" title="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
         <div class="about-text">
           <p style="margin-bottom:1rem;">
             <strong style="font-size:1.10rem; color:var(--navy);">Yohanes Eko Riyanto</strong><br>
-            <span style="font-size:1.10rem; color:var(--warm-grey); font-weight:600;">Professor of Economics | Chair, School of Social Sciences</span><br>
+            <span style="font-size:1.10rem; color:var(--warm-grey); font-weight:600;">Professor of Economics | Chair, <a href="https://www.ntu.edu.sg/sss" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline; text-decoration-color:var(--border);">School of Social Sciences</a></span><br>
             <span style="font-size:1.10rem; color:var(--warm-grey); font-weight:600;">Nanyang Technological University, Singapore</span>
           </p>
           <p>

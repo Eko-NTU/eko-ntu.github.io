@@ -147,6 +147,61 @@
       color:var(--warm-grey); font-size:0.85rem;
       border:1px dashed var(--border-light); border-radius:6px;
     }
+
+    /* ── Photography profiles ── */
+    .photo-platforms {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .photo-platform {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 1.1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--navy);
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: all var(--transition);
+    }
+    .photo-platform:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      box-shadow: 0 2px 10px rgba(184,136,46,0.12);
+      text-decoration: none;
+    }
+    .photo-platform svg { flex-shrink: 0; }
+
+    /* ── Flickr thumbnails ── */
+    .flickr-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .flickr-thumb {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 4px;
+      display: block;
+    }
+    .flickr-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: grayscale(15%);
+    }
+    .flickr-thumb:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
   </style>
 </head>
 <body>
@@ -234,6 +289,35 @@ const ALBUMS = [
       <h1 class="page-hero-title">Personal</h1>
     </div>
   </header>
+
+  <!-- ── Photography Profiles ── -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <p class="section-label">Photography Online</p>
+      <h2 class="section-title">Find Me On</h2>
+      <div class="photo-platforms">
+        <!-- Flickr -->
+        <a href="https://www.flickr.com/people/shutter_flick/" target="_blank" rel="noopener noreferrer" class="photo-platform">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <circle cx="7" cy="12" r="4.5"/>
+            <circle cx="17" cy="12" r="4.5"/>
+          </svg>
+          Flickr
+        </a>
+        <!-- Photo.Net -->
+        <a href="https://www.photo.net/profile/239523-yohanesriyanto/" target="_blank" rel="noopener noreferrer" class="photo-platform">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          Photo.Net
+        </a>
+      </div>
+
+      <p class="section-label" style="margin-top:0.5rem;">Recent shots</p>
+      <h2 class="section-title">Latest from Flickr</h2>
+      <div class="flickr-thumb-grid" id="flickr-thumb-grid">
+        <p style="color:var(--warm-grey); font-size:0.85rem; grid-column:1/-1;">Loading…</p>
+      </div>
+    </div>
+  </section>
 
   <!-- ── Gallery ── -->
   <section class="section">
@@ -432,6 +516,27 @@ const ALBUMS = [
 
     // ── Init ──
     renderAlbums();
+
+    // ── Flickr recent photos ──
+    (async function loadFlickr() {
+      const grid = document.getElementById('flickr-thumb-grid');
+      try {
+        const res  = await fetch('https://api.flickr.com/services/feeds/photos_public.gne?alias=shutter_flick&format=json&nojsoncallback=1');
+        const data = await res.json();
+        const items = (data.items || []).slice(0, 12);
+        if (items.length === 0) throw new Error('empty');
+        grid.innerHTML = items.map(item => {
+          const thumb = item.media.m.replace('_m.jpg', '_q.jpg');
+          return `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="flickr-thumb" title="${item.title}">
+            <img src="${thumb}" alt="${item.title}" loading="lazy" />
+          </a>`;
+        }).join('');
+      } catch(e) {
+        grid.innerHTML = `<p style="color:var(--warm-grey);font-size:0.85rem;grid-column:1/-1;">
+          Visit <a href="https://www.flickr.com/people/shutter_flick/" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">my Flickr profile</a> to see my photos.
+        </p>`;
+      }
+    })();
   </script>
 
   <!-- Start of StatCounter Code -->
