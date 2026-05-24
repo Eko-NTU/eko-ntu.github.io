@@ -6,6 +6,30 @@
   <meta name="description" content="Yohanes Eko Riyanto — Professor of Economics at Nanyang Technological University. Experimental and Behavioral Economics." />
   <title>Yohanes Eko Riyanto | NTU Economics</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    #more-about {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    #more-about.open {
+      max-height: 600px;
+    }
+    #more-about-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0.6rem 0 0.8rem;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+    #more-about-btn:hover { color: var(--navy); }
+  </style>
 </head>
 <body>
 
@@ -65,23 +89,33 @@
           <p>
             Beyond my research, I serve as Chair of the School of Social Sciences at NTU, a school spanning
             Economics, Psychology, Public Policy and Global Affairs, and Sociology, and as Associate Editor
-            of the <em>Journal of Economic Behavior and Organization</em>. Prior to this, I served as
-            Associate Dean for Research of the College of Humanities, Arts, and Social Sciences. My work
-            has been recognised by the Vernon L. Smith Award for Excellence in Experimental Finance (2020)
-            and was a finalist for the Exeter Prize in Experimental Economics, Decision Theory, and
-            Behavioral Economics (2016). My research has attracted competitive funding from various bodies,
-            including Singapore's National Research Foundation, Ministry of Education, Economic Development
-            Board, Temasek Lab, AI Singapore, and the Hong Kong Research Grants Council, reflecting work
-            that reaches well beyond economics into other fields.
+            of the <em>Journal of Economic Behavior and Organization</em>.
           </p>
-          <p>
-            My teaching spans behavioral economics, experimental methods, and microeconomics at NTU.
-            Outside the classroom, I have engaged with government agencies and industry partners, including
-            Singapore's Land Transport Authority, Economic Development Board, and Ministry of Social and
-            Family Development, on applied research. A collaboration with ENGIE and ERI@N through the
-            PowerZ initiative explored whether information disclosure and behavioral design could encourage
-            more energy-efficient choices in practice.
-          </p>
+
+          <!-- Expandable section -->
+          <div id="more-about">
+            <p>
+              Prior to this, I served as Associate Dean for Research of the College of Humanities, Arts,
+              and Social Sciences, and have held several school-level positions spanning research, academic
+              affairs, and undergraduate education. My work has been recognised by the Vernon L. Smith
+              Award for Excellence in Experimental Finance (2020) and was a finalist for the Exeter Prize
+              in Experimental Economics, Decision Theory, and Behavioral Economics (2016). My research has
+              attracted competitive funding from various bodies, including Singapore's National Research
+              Foundation, Ministry of Education, Economic Development Board, Temasek Lab, AI Singapore,
+              and the Hong Kong Research Grants Council, reflecting work that reaches well beyond economics
+              into other fields.
+            </p>
+            <p>
+              My teaching spans behavioral economics, experimental methods, and microeconomics at NTU.
+              Outside the classroom, I have engaged with government agencies and industry partners,
+              including Singapore's Land Transport Authority, Economic Development Board, and Ministry of
+              Social and Family Development, on applied research. A collaboration with ENGIE and ERI@N
+              through the PowerZ initiative explored whether information disclosure and behavioral design
+              could encourage more energy-efficient choices in practice.
+            </p>
+          </div>
+
+          <button type="button" id="more-about-btn" aria-expanded="false">More about me &rarr;</button>
           <div class="about-links">
             <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="tag-link">↓ Curriculum Vitae</a>
             <a href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer" class="tag-link">↗ NTU Official Page</a>
@@ -98,6 +132,15 @@
   </footer>
 
   <script>
+    // More about me toggle
+    const moreBtn     = document.getElementById('more-about-btn');
+    const moreSection = document.getElementById('more-about');
+    moreBtn.addEventListener('click', () => {
+      const isOpen = moreSection.classList.toggle('open');
+      moreBtn.textContent = isOpen ? '← Less' : 'More about me →';
+      moreBtn.setAttribute('aria-expanded', isOpen);
+    });
+
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
