@@ -4,97 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Full list of publications by Yohanes Eko Riyanto, organized chronologically." />
+  <meta name="theme-color" content="#FAF9F6" />
   <title>Publications | Yohanes Eko Riyanto</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .pub-section { padding: 0 2rem 4rem; }
-    .pub-section-inner { max-width: var(--max-w); margin: 0 auto; }
-    .section-nav {
-      position: sticky;
-      top: var(--nav-h);
-      background: var(--ivory);
-      border-bottom: 1px solid var(--border-light);
-      z-index: 100;
-      padding: 0.8rem 2rem;
-    }
-    .section-nav-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .section-nav-inner::-webkit-scrollbar { display: none; }
-    .section-nav-inner a {
-      font-family: var(--font-ui);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--warm-grey);
-      text-decoration: none;
-      white-space: nowrap;
-      padding: 0.2rem 0;
-      border-bottom: 1.5px solid transparent;
-      transition: all var(--transition);
-    }
-    .section-nav-inner a:hover { color: var(--navy); border-bottom-color: var(--gold); }
-    .cat-header {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--navy);
-      margin-top: 3.5rem;
-      margin-bottom: 0.6rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .cat-header:first-of-type { margin-top: 1.5rem; }
-  </style>
 </head>
 <body>
 
-  <!-- ── Navigation ── -->
-  <nav class="nav" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <span class="nav-monogram">YER</span>
-      </a>
-      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="publications.html" class="active">Publications</a></li>
-        <li><a href="working-papers.html">Working Papers</a></li>
-        <li><a href="personal.html">Personal</a></li>
-      </ul>
-    </div>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ── Page Hero ── -->
-  <header class="page-hero">
-    <div class="page-hero-inner">
-      <p class="page-hero-label">Yohanes Eko Riyanto</p>
-      <h1 class="page-hero-title">Publications</h1>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Yohanes Eko Riyanto</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html" aria-current="page">Publications</a></li>
+          <li><a href="working-papers.html">Working Papers</a></li>
+          <li><a href="personal.html">Photography</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">Scholarship</p>
+      <h1>Publications</h1>
+      <p class="page-intro">Journal articles in reverse chronological order, followed by other articles and book chapters.</p>
     </div>
   </header>
 
   <!-- ── Section Navigation ── -->
-  <div class="section-nav">
-    <div class="section-nav-inner">
+  <nav class="section-nav" aria-label="Publication categories">
+    <div class="container section-nav-inner">
       <a href="#articles">Journal Articles</a>
       <a href="#other">Other Articles</a>
       <a href="#chapters">Book Chapters</a>
       <a href="working-papers.html">Working Papers →</a>
     </div>
-  </div>
+  </nav>
 
   <!-- ── Journal Articles ── -->
   <div class="pub-section">
-    <div class="pub-section-inner">
+    <div class="container">
 
       <h2 class="cat-header" id="articles">Journal Articles</h2>
 
@@ -110,7 +72,7 @@
               <p class="pub-meta">
                 <span class="coauthors">with Nilanjan Roy and Jiani Wu. </span>
                 <span class="journal">Journal of Financial and Quantitative Analysis</span>.
-                <span style="color:var(--gold); font-weight:600;">Conditionally Accepted</span>
+                <span class="pub-status">Conditionally Accepted</span>
               </p>
             </div>
           </div>
@@ -124,7 +86,7 @@
               <p class="pub-meta">
                 <span class="coauthors">with Fuhai Hong, Jubo Yan, and Yuanyuan Huo. </span>
                 <span class="journal">Journal of Economic Behavior and Organization</span>.
-                <span style="color:var(--gold); font-weight:600;">Forthcoming</span>
+                <span class="pub-status">Forthcoming</span>
               </p>
             </div>
           </div>
@@ -629,7 +591,7 @@
                 <span class="journal">Journal of Finance</span>, Vol. 74, Issue 4, pp. 1975–2010.
                 <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.12768" target="_blank" rel="noopener noreferrer">doi</a>
               </p>
-              <div><span class="pub-badge">🏆 2020 Vernon L. Smith Award for Excellence in Experimental Finance</span></div>
+              <div><span class="pub-badge">2020 Vernon L. Smith Award for Excellence in Experimental Finance</span></div>
             </div>
           </div>
         </li>
@@ -1119,7 +1081,7 @@
           <p class="pub-meta"><span class="coauthors">with Aris Ananta. </span><span class="journal">ASEAN Economic Bulletin</span>, Vol. 23, No. 1, pp. 1–11 (2006).</p>
         </li>
         <li class="pub-item">
-          <p class="pub-title">"The Economics of the Weakest Link TV Game Show" <span style="font-style:normal;">[Dutch: "De Economie van de Zwakste Schakel"]</span></p>
+          <p class="pub-title">"The Economics of the Weakest Link TV Game Show" <span class="pub-aside">[Dutch: "De Economie van de Zwakste Schakel"]</span></p>
           <p class="pub-meta"><span class="coauthors">with Marco Haan and Bart Los. </span><span class="journal">Economische and Statistische Berichten (ESB)</span>, April 30, pp. 207–209 (2004).</p>
         </li>
       </ul>
@@ -1159,24 +1121,29 @@
 
     </div>
   </div>
+  </main>
 
-  <!-- ── Footer ── -->
-  <footer class="site-footer" style="background:var(--navy);">
-    <p>© 2025 Yohanes Eko Riyanto &nbsp;·&nbsp; Nanyang Technological University, Singapore</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-id">
+        <p class="footer-name">Yohanes Eko Riyanto</p>
+        <p>Professor of Economics<br />Chair, School of Social Sciences<br />Nanyang Technological University, Singapore</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae</a></li>
+        <li><a href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer">NTU profile</a></li>
+        <li><a href="mailto:yeriyanto@ntu.edu.sg">Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=PZ6fS_QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0001-7343-4043" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+        <li><a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="footer-base"><p>© 2026 Yohanes Eko Riyanto</p></div>
+    </div>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-    const toggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
-    });
-  </script>
+  <script src="site.js" defer></script>
 
   <!-- Start of StatCounter Code -->
   <script type="text/javascript">

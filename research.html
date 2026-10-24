@@ -4,160 +4,161 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Research areas of Yohanes Eko Riyanto — Experimental Asset Markets, Market Design, Cooperation and Social Networks." />
+  <meta name="theme-color" content="#FAF9F6" />
   <title>Research | Yohanes Eko Riyanto</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ── Navigation ── -->
-  <nav class="nav" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <span class="nav-monogram">YER</span>
-      </a>
-      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="research.html" class="active">Research</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="working-papers.html">Working Papers</a></li>
-        <li><a href="personal.html">Personal</a></li>
-      </ul>
-    </div>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ── Page Hero ── -->
-  <header class="page-hero">
-    <div class="page-hero-inner">
-      <p class="page-hero-label">Yohanes Eko Riyanto</p>
-      <h1 class="page-hero-title">Research</h1>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Yohanes Eko Riyanto</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html" aria-current="page">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="working-papers.html">Working Papers</a></li>
+          <li><a href="personal.html">Photography</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- ── Overview ── -->
-  <section class="section">
-    <div class="section-inner">
-      <h2 class="section-title">Research Interests</h2>
+  <main id="main">
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">Research Interests</p>
+        <h1>Research</h1>
+        <p class="page-intro">
+          I utilize controlled laboratory, and field, experiments to investigate how individuals make various
+          economic decisions and how they are influenced by their preferences and beliefs, their environment
+          (market and non-market institutions surrounding them), and their strategic interactions with other individuals.
+        </p>
+      </div>
+    </header>
 
-      <p style="font-size:1.05rem; margin-bottom:1.5rem; text-align:justify;">
-        I utilize controlled laboratory, and field, experiments to investigate how individuals make various
-        economic decisions and how they are influenced by their preferences and beliefs, their environment
-        (market and non-market institutions surrounding them), and their strategic interactions with other individuals.
-      </p>
+    <section class="section" aria-labelledby="themes-title">
+      <div class="container">
+        <h2 class="section-title" id="themes-title">Main Research Themes</h2>
+
+        <article class="thrust">
+          <div>
+            <span class="thrust-num">01</span>
+            <h3>Experimental Asset Markets and Finance</h3>
+            <p>
+              Within this research thrust, I examine topics such as insider trading regulations,
+              the interaction between social networks and trader behavior, the impact of consumption
+              smoothing on asset prices, dark pools, algorithmic trading, and social trading and
+              information sharing. A recurring question is how information structure and market
+              microstructure affect price efficiency and trader welfare.
+            </p>
+          </div>
+          <figure class="thrust-fig">
+            <img src="images/research-finance.png" alt="Illustration for experimental asset markets and finance" loading="lazy" />
+          </figure>
+        </article>
+
+        <article class="thrust">
+          <div>
+            <span class="thrust-num">02</span>
+            <h3>Experimental Market Design</h3>
+            <p>
+              In this research area, I investigate methods to encourage organ donation enrolment,
+              considering factors such as blood compatibility, transplant priority for donors,
+              incentive schemes such as transferable vouchers, family consent, and the relationship
+              between deceased- and living-kin organ donation. I also study how information provision
+              and priority rules jointly affect donation decisions and social welfare, as well as
+              repugnant transactions.
+            </p>
+          </div>
+          <figure class="thrust-fig">
+            <img src="images/research-design.png" alt="Illustration for experimental market design" loading="lazy" />
+          </figure>
+        </article>
+
+        <article class="thrust">
+          <div>
+            <span class="thrust-num">03</span>
+            <h3>Cooperation, Coordination, and Dynamic Social Networks</h3>
+            <p>
+              In this research focus, I explore mechanisms to promote cooperation and coordination
+              in social dilemmas, social network formation for prisoner's dilemma and coordination
+              games, the evolution of cooperation in dynamic networks, and the impact of social
+              identity on group interactions. I am particularly interested in how network topology
+              and link flexibility shape the emergence of prosocial norms.
+            </p>
+          </div>
+          <figure class="thrust-fig">
+            <img src="images/research-networks.png" alt="Illustration for cooperation, coordination, and dynamic social networks" loading="lazy" />
+          </figure>
+        </article>
+
+        <article class="thrust">
+          <div>
+            <span class="thrust-num">04</span>
+            <h3>AI, Algorithms, and Behavioral Responses</h3>
+            <p>
+              This research strand examines how artificial intelligence reshapes individual and collective
+              economic behavior. I investigate whether large language models outperform humans in financial
+              prediction tasks, and how AI-generated advice, relative to human advice, shapes investment
+              decisions when advisor identity or conflicts of interest are disclosed or concealed. Further
+              projects explore whether generative AI promotes cooperation and collective efficiency in social
+              dilemma environments, and how workers strategically invest in skills in response to AI automation
+              and AI-advisory roles. Together, these studies identify the behavioral mechanisms governing
+              human adaptation to intelligent systems.
+            </p>
+          </div>
+          <figure class="thrust-fig">
+            <img src="images/research-ai.png" alt="Illustration for AI, algorithms, and behavioral responses" loading="lazy" />
+          </figure>
+        </article>
+
+        <article class="thrust">
+          <div>
+            <span class="thrust-num">05</span>
+            <h3>Others</h3>
+            <p>
+              I also explore various topics such as contest experiments, social identity and incentives,
+              charitable giving, and behavioral nudges.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-id">
+        <p class="footer-name">Yohanes Eko Riyanto</p>
+        <p>Professor of Economics<br />Chair, School of Social Sciences<br />Nanyang Technological University, Singapore</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae</a></li>
+        <li><a href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer">NTU profile</a></li>
+        <li><a href="mailto:yeriyanto@ntu.edu.sg">Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=PZ6fS_QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0001-7343-4043" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+        <li><a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- ── Main Research Areas ── -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <h2 class="section-title" style="text-align:center;">Main Research Themes</h2>
-
-      <!-- Thrust 1 -->
-      <div class="research-thrust">
-        <div>
-          <h3 style="font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">1. Experimental Asset Markets and Finance</h3>
-          <p style="text-align:justify;">
-            Within this research thrust, I examine topics such as insider trading regulations,
-            the interaction between social networks and trader behavior, the impact of consumption
-            smoothing on asset prices, dark pools, algorithmic trading, and social trading and
-            information sharing. A recurring question is how information structure and market
-            microstructure affect price efficiency and trader welfare.
-          </p>
-        </div>
-        <div class="research-thrust-fig">
-          <img src="images/research-finance.png" alt="Experimental Asset Markets and Finance" />
-        </div>
-      </div>
-
-      <!-- Thrust 2 -->
-      <div class="research-thrust">
-        <div>
-          <h3 style="font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">2. Experimental Market Design</h3>
-          <p style="text-align:justify;">
-            In this research area, I investigate methods to encourage organ donation enrolment,
-            considering factors such as blood compatibility, transplant priority for donors,
-            incentive schemes such as transferable vouchers, family consent, and the relationship
-            between deceased- and living-kin organ donation. I also study how information provision
-            and priority rules jointly affect donation decisions and social welfare, as well as
-            repugnant transactions.
-          </p>
-        </div>
-        <div class="research-thrust-fig">
-          <img src="images/research-design.png" alt="Experimental Market Design" />
-        </div>
-      </div>
-
-      <!-- Thrust 3 -->
-      <div class="research-thrust">
-        <div>
-          <h3 style="font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">3. Cooperation, Coordination, and Dynamic Social Networks</h3>
-          <p style="text-align:justify;">
-            In this research focus, I explore mechanisms to promote cooperation and coordination
-            in social dilemmas, social network formation for prisoner's dilemma and coordination
-            games, the evolution of cooperation in dynamic networks, and the impact of social
-            identity on group interactions. I am particularly interested in how network topology
-            and link flexibility shape the emergence of prosocial norms.
-          </p>
-        </div>
-        <div class="research-thrust-fig">
-          <img src="images/research-networks.png" alt="Cooperation, Coordination, and Dynamic Social Networks" />
-        </div>
-      </div>
-
-      <!-- Thrust 4 -->
-      <div class="research-thrust" style="align-items:center;">
-        <div>
-          <h3 style="font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">4. AI, Algorithms, and Behavioral Responses</h3>
-          <p style="text-align:justify;">
-            This research strand examines how artificial intelligence reshapes individual and collective
-            economic behavior. I investigate whether large language models outperform humans in financial
-            prediction tasks, and how AI-generated advice, relative to human advice, shapes investment
-            decisions when advisor identity or conflicts of interest are disclosed or concealed. Further
-            projects explore whether generative AI promotes cooperation and collective efficiency in social
-            dilemma environments, and how workers strategically invest in skills in response to AI automation
-            and AI-advisory roles. Together, these studies identify the behavioral mechanisms governing
-            human adaptation to intelligent systems.
-          </p>
-        </div>
-        <div class="research-thrust-fig">
-          <img src="images/research-ai.png" alt="AI, Algorithms, and Behavioral Responses" />
-        </div>
-      </div>
-
-      <!-- Thrust 5 -->
-      <div class="research-thrust" style="grid-template-columns:1fr; margin-bottom:0;">
-        <div>
-          <h3 style="font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem;">5. Others</h3>
-          <p style="text-align:justify;">
-            I also explore various topics such as contest experiments, social identity and incentives,
-            charitable giving, and behavioral nudges.
-          </p>
-        </div>
-      </div>
+    <div class="container">
+      <div class="footer-base"><p>© 2026 Yohanes Eko Riyanto</p></div>
     </div>
-  </section>
-
-  <!-- ── Footer ── -->
-  <footer class="site-footer" style="background:var(--navy);">
-    <p>© 2025 Yohanes Eko Riyanto &nbsp;·&nbsp; Nanyang Technological University, Singapore</p>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    const toggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
-    });
-
-  </script>
+  <script src="site.js" defer></script>
 
   <!-- Start of StatCounter Code -->
   <script type="text/javascript">

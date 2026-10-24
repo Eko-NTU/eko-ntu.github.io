@@ -4,196 +4,238 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Working papers and papers under revision by Yohanes Eko Riyanto." />
+  <meta name="theme-color" content="#FAF9F6" />
   <title>Working Papers | Yohanes Eko Riyanto</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ── Navigation ── -->
-  <nav class="nav" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <span class="nav-monogram">YER</span>
-      </a>
-      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="working-papers.html" class="active">Working Papers</a></li>
-        <li><a href="personal.html">Personal</a></li>
-      </ul>
-    </div>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ── Page Hero ── -->
-  <header class="page-hero">
-    <div class="page-hero-inner">
-      <p class="page-hero-label">Yohanes Eko Riyanto</p>
-      <h1 class="page-hero-title">Working Papers</h1>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Yohanes Eko Riyanto</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="working-papers.html" aria-current="page">Working Papers</a></li>
+          <li><a href="personal.html">Photography</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- ── Working Papers ── -->
+  <main id="main">
+  <header class="page-header">
+    <div class="container">
+      <p class="eyebrow">Research in Progress</p>
+      <h1>Working Papers</h1>
+      <p class="page-intro">Papers currently under revision at journals, followed by working papers and work in progress.</p>
+    </div>
+  </header>
+
   <!-- ── R&R ── -->
-  <section class="section">
-    <div class="section-inner">
-      <h2 class="section-title">Papers Under Revision &amp; Resubmission</h2>
-      <div class="wp-list">
+  <section class="section" aria-labelledby="rr-title">
+    <div class="container">
+      <h2 class="section-title" id="rr-title">Papers Under Revision &amp; Resubmission</h2>
+      <ul class="wp-list">
 
-        <div class="wp-item">
-          <p>"Cooperation or Competition? Social Identity and Incentives in Workgroups" <span style="font-style:italic; color:var(--warm-grey);">(with Jonathan Yeo)</span> (R&amp;R at <em>Journal of Law, Economics, and Organization</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Cooperation or Competition? Social Identity and Incentives in Workgroups"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Jonathan Yeo</span><span class="wp-status">R&amp;R at <em>Journal of Law, Economics, and Organization</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"The Power of Connection: How Social Networks Mitigate Post-Earnings Announcement Drift" <span style="font-style:italic; color:var(--warm-grey);">(with Nilanjan Roy and Jiani Wu)</span> (Conditionally Accepted at <em>Journal of Financial and Quantitative Analysis</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"The Power of Connection: How Social Networks Mitigate Post-Earnings Announcement Drift"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Nilanjan Roy and Jiani Wu</span><span class="wp-status">Conditionally Accepted at <em>Journal of Financial and Quantitative Analysis</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Trading on Hearsay: The Role of Rumours and Influencers' Investment Horizon in Shaping Asset Prices" <span style="font-style:italic; color:var(--warm-grey);">(with Nilanjan Roy and Yan Wang)</span> (R&amp;R at <em>Games and Economic Behavior</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Trading on Hearsay: The Role of Rumours and Influencers' Investment Horizon in Shaping Asset Prices"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Nilanjan Roy and Yan Wang</span><span class="wp-status">R&amp;R at <em>Games and Economic Behavior</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Product Differentiation, Price Revisions, and Collusion" <span style="font-style:italic; color:var(--warm-grey);">(with Nilanjan Roy and Yang Lirong)</span> (R&amp;R at <em>Management Science</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Product Differentiation, Price Revisions, and Collusion"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Nilanjan Roy and Yang Lirong</span><span class="wp-status">R&amp;R at <em>Management Science</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"One-Share-One-Vote and Dual-Class-Share in the Laboratory" <span style="font-style:italic; color:var(--warm-grey);">(with Edward Halim and Te Bao)</span> (R&amp;R at <em>Games and Economic Behavior</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"One-Share-One-Vote and Dual-Class-Share in the Laboratory"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Edward Halim and Te Bao</span><span class="wp-status">R&amp;R at <em>Games and Economic Behavior</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Leading the Way: How Leadership Styles Shape Efficiency and Equality" <span style="font-style:italic; color:var(--warm-grey);">(with Jonathan Yeo and Yuxin Wang)</span> (R&amp;R at <em>Journal of Economic Behavior and Organization</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Leading the Way: How Leadership Styles Shape Efficiency and Equality"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Jonathan Yeo and Yuxin Wang</span><span class="wp-status">R&amp;R at <em>Journal of Economic Behavior and Organization</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Efficiency and Equity Through Intertemporal Coordination in Groups" <span style="font-style:italic; color:var(--warm-grey);">(with Chen Siyu, Liu Fang, Jonathan Tan, and Jonathan Yeo)</span> (R&amp;R at <em>Journal of Economic Behavior and Organization</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Efficiency and Equity Through Intertemporal Coordination in Groups"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Chen Siyu, Liu Fang, Jonathan Tan, and Jonathan Yeo</span><span class="wp-status">R&amp;R at <em>Journal of Economic Behavior and Organization</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Trading in Dark Pools, Information Acquisition, and Information Aggregation" <span style="font-style:italic; color:var(--warm-grey);">(with Edward Halim, Nilanjan Roy, and Yan Wang)</span> (R&amp;R at <em>Journal of Economic Dynamics and Control</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Trading in Dark Pools, Information Acquisition, and Information Aggregation"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Edward Halim, Nilanjan Roy, and Yan Wang</span><span class="wp-status">R&amp;R at <em>Journal of Economic Dynamics and Control</em></span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Does Algorithmic Trading Attenuate Asset Price Bubbles? An Experiment" <span style="font-style:italic; color:var(--warm-grey);">(with Stefan Altmann and Christoph Hoelscher)</span> (Reject &amp; Resubmit at <em>Journal of Banking and Finance</em>)</p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Does Algorithmic Trading Attenuate Asset Price Bubbles? An Experiment"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Stefan Altmann and Christoph Hoelscher</span><span class="wp-status">Reject &amp; Resubmit at <em>Journal of Banking and Finance</em></span></p>
+        </li>
 
-      </div>
+      </ul>
     </div>
   </section>
 
   <!-- ── Working Papers ── -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <h2 class="section-title">Working Papers &amp; Work-in-Progress</h2>
-      <div class="wp-list">
+  <section class="section" aria-labelledby="wp-title">
+    <div class="container">
+      <h2 class="section-title" id="wp-title">Working Papers &amp; Work-in-Progress</h2>
+      <ul class="wp-list">
 
-        <div class="wp-item">
-          <p>"Less is More? Maximizing Charitable Donations during Crises: An Online Field Experiment" <span style="font-style:italic; color:var(--warm-grey);">(with Masyhur Hilmy and Gedeon Lim)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Less is More? Maximizing Charitable Donations during Crises: An Online Field Experiment"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Masyhur Hilmy and Gedeon Lim</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"The Strategic Benefit of Information Sharing: An Experimental Asset Market Analysis" <span style="font-style:italic; color:var(--warm-grey);">(with Nilanjan Roy and Jiani Wu)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"The Strategic Benefit of Information Sharing: An Experimental Asset Market Analysis"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Nilanjan Roy and Jiani Wu</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Gender and Risky Investment: Do Markets Reflect or Alleviate Gender Stereotypes in Leadership?" <span style="font-style:italic; color:var(--warm-grey);">(with Lata Gangadharan, Jean Paul Rabanal, Olga A. Rud, and Bernt Arne Odegaard)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Gender and Risky Investment: Do Markets Reflect or Alleviate Gender Stereotypes in Leadership?"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Lata Gangadharan, Jean Paul Rabanal, Olga A. Rud, and Bernt Arne Odegaard</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Algorithmic Trading in Experimental Asset Markets with Heterogeneous Information" <span style="font-style:italic; color:var(--warm-grey);">(with Stefan Altmann and Yan Mingyang)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Algorithmic Trading in Experimental Asset Markets with Heterogeneous Information"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Stefan Altmann and Yan Mingyang</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Intergenerational Incentives for Organ Donation: Balancing Donor vs. Family Priority" <span style="font-style:italic; color:var(--warm-grey);">(with Mengling Li and Min Fang)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Intergenerational Incentives for Organ Donation: Balancing Donor vs. Family Priority"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Mengling Li and Min Fang</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"The Incentive Effect of Coarse and Refined Reporting: Theory and Experiment" <span style="font-style:italic; color:var(--warm-grey);">(with Edward Halim, Yukihiko Funaki, and Michiko Ogaku)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"The Incentive Effect of Coarse and Refined Reporting: Theory and Experiment"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Edward Halim, Yukihiko Funaki, and Michiko Ogaku</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Cooperation or Competition? Social Identity and Incentives in Workgroups" <span style="font-style:italic; color:var(--warm-grey);">(with Jonathan Yeo)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Cooperation or Competition? Social Identity and Incentives in Workgroups"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Jonathan Yeo</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Cooperation and Cognition in Social Networks" <span style="font-style:italic; color:var(--warm-grey);">(with Edoardo Gallo, Joseph Lee, and Erwin Wong)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Cooperation and Cognition in Social Networks"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Edoardo Gallo, Joseph Lee, and Erwin Wong</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Action Revisions in Coordination Games with Conflicting Interests: An Experiment" <span style="font-style:italic; color:var(--warm-grey);">(with Nilanjan Roy and Yang Lirong)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Action Revisions in Coordination Games with Conflicting Interests: An Experiment"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Nilanjan Roy and Yang Lirong</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"From Punitive to Positive: Reallocating Penalties as Rewards to Promote Cooperation" <span style="font-style:italic; color:var(--warm-grey);">(with Yang Lirong)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"From Punitive to Positive: Reallocating Penalties as Rewards to Promote Cooperation"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Yang Lirong</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Changing the Likelihood or the Severity of Punishment? An Experiment on Crime and Corruption Deterrence" <span style="font-style:italic; color:var(--warm-grey);">(with Jing Lin)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Changing the Likelihood or the Severity of Punishment? An Experiment on Crime and Corruption Deterrence"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Jing Lin</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"The Role of Information Structure on Cooperation and Coordination: An Experiment" <span style="font-style:italic; color:var(--warm-grey);">(with Jing Lin)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"The Role of Information Structure on Cooperation and Coordination: An Experiment"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Jing Lin</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"AI vs. Humans: Are Large Language Models More Rational and Accurate in Financial Predictions?" <span style="font-style:italic; color:var(--warm-grey);">(with Luo Hongying)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"AI vs. Humans: Are Large Language Models More Rational and Accurate in Financial Predictions?"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Luo Hongying</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"AI vs. Humans: Can AI Advice Enhance Human Decision-Making?" <span style="font-style:italic; color:var(--warm-grey);">(with Luo Hongying)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"AI vs. Humans: Can AI Advice Enhance Human Decision-Making?"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Luo Hongying</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Does Generative AI Enhance Group Efficiency? Evidence from a Threshold Public Goods Game" <span style="font-style:italic; color:var(--warm-grey);">(with Luo Hongying and Zhou Yuwen)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Does Generative AI Enhance Group Efficiency? Evidence from a Threshold Public Goods Game"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Luo Hongying and Zhou Yuwen</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Trusting the Messenger: The Role of Human vs AI Advisors in Risky Investment Choices" <span style="font-style:italic; color:var(--warm-grey);">(with Yan Mingyang)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Trusting the Messenger: The Role of Human vs AI Advisors in Risky Investment Choices"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Yan Mingyang</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Knowing Less is Getting More in Bilateral Trade: An Experiment" <span style="font-style:italic; color:var(--warm-grey);">(with Jiahua Zhu)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Knowing Less is Getting More in Bilateral Trade: An Experiment"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Jiahua Zhu</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Persuading Buyers to Embrace Socially Responsible Acts: An Experimental Investigation" <span style="font-style:italic; color:var(--warm-grey);">(with Ng Yew Kwang and Yan Wang)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Persuading Buyers to Embrace Socially Responsible Acts: An Experimental Investigation"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Ng Yew Kwang and Yan Wang</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"When Transparency Fails: Altruistic Framing Sustains Demand for Useless Advice Despite Complete Information" <span style="font-style:italic; color:var(--warm-grey);">(with Nattavudh Powdthavee and Zhang Xiaojie)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"When Transparency Fails: Altruistic Framing Sustains Demand for Useless Advice Despite Complete Information"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Nattavudh Powdthavee and Zhang Xiaojie</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Beauty Pays for Crime? Evidence from Criminal Sentencing" <span style="font-style:italic; color:var(--warm-grey);">(with Tang Cheng Keat and Jonathan Yeo)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Beauty Pays for Crime? Evidence from Criminal Sentencing"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Tang Cheng Keat and Jonathan Yeo</span></p>
+        </li>
 
-        <div class="wp-item">
-          <p>"Nudging Ride-Hailing Platform's Users to Book a Ride using Low-Fare Pop-Ups: A Large Scale Natural Field Experiment" <span style="font-style:italic; color:var(--warm-grey);">(with Cheng Keat Tang and Ruike Zhang)</span></p>
-        </div>
+        <li class="wp-item">
+          <p class="wp-title">"Nudging Ride-Hailing Platform's Users to Book a Ride using Low-Fare Pop-Ups: A Large Scale Natural Field Experiment"</p>
+          <p class="wp-meta"><span class="wp-coauthors">with Cheng Keat Tang and Ruike Zhang</span></p>
+        </li>
 
-      </div>
+      </ul>
     </div>
   </section>
+  </main>
 
-  <!-- ── Footer ── -->
-  <footer class="site-footer" style="background:var(--navy);">
-    <p>© 2025 Yohanes Eko Riyanto &nbsp;·&nbsp; Nanyang Technological University, Singapore</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-id">
+        <p class="footer-name">Yohanes Eko Riyanto</p>
+        <p>Professor of Economics<br />Chair, School of Social Sciences<br />Nanyang Technological University, Singapore</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae</a></li>
+        <li><a href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer">NTU profile</a></li>
+        <li><a href="mailto:yeriyanto@ntu.edu.sg">Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=PZ6fS_QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0001-7343-4043" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+        <li><a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="footer-base"><p>© 2026 Yohanes Eko Riyanto</p></div>
+    </div>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-    const toggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
-    });
-  </script>
+  <script src="site.js" defer></script>
 
   <!-- Start of StatCounter Code -->
   <script type="text/javascript">

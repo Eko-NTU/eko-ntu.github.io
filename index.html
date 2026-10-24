@@ -3,214 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Yohanes Eko Riyanto — Professor of Economics at Nanyang Technological University. Experimental and Behavioral Economics." />
+  <meta name="description" content="Yohanes Eko Riyanto — Professor of Economics and Chair of the School of Social Sciences at Nanyang Technological University, Singapore. Experimental and Behavioral Economics." />
+  <meta name="theme-color" content="#FAF9F6" />
   <title>Yohanes Eko Riyanto | NTU Economics</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    #more-about {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    #more-about.open {
-      max-height: 600px;
-    }
-    #more-about-btn {
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0.6rem 0 0.8rem;
-      font-family: var(--font-ui);
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--gold);
-      cursor: pointer;
-      transition: color var(--transition);
-    }
-    #more-about-btn:hover { color: var(--navy); }
-
-    /* ── Photo column + social icons ── */
-    .about-photo-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .about-social-icons {
-      display: flex;
-      gap: 0.9rem;
-      justify-content: center;
-    }
-    .about-social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--warm-grey);
-      text-decoration: none;
-      transition: color var(--transition), transform var(--transition);
-    }
-    .about-social-icons a:hover {
-      color: var(--gold);
-      transform: translateY(-2px);
-      text-decoration: none;
-    }
-    .about-social-icons svg { width: 20px; height: 20px; }
-  </style>
 </head>
 <body>
 
-  <!-- ── Navigation ── -->
-  <nav class="nav" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <span class="nav-monogram">YER</span>
-      </a>
-      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="working-papers.html">Working Papers</a></li>
-        <li><a href="personal.html">Personal</a></li>
-      </ul>
-    </div>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ── Hero ── -->
-  <header class="hero">
-    <div class="hero-inner">
-      <h1 class="hero-name">Yohanes <em>Eko</em> Riyanto</h1>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Yohanes Eko Riyanto</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="working-papers.html">Working Papers</a></li>
+          <li><a href="personal.html">Photography</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- ── About ── -->
-  <section class="section" id="about">
-    <div class="section-inner">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Welcome</h2>
-      <div class="about-grid">
-        <div class="about-photo-col">
-          <img src="images/profile_composite.png" alt="Yohanes Eko Riyanto" class="about-photo" onerror="this.outerHTML='<div class=&quot;about-photo-placeholder&quot;>YER</div>'" />
-          <div class="about-social-icons">
-            <!-- Email -->
-            <a href="mailto:yeriyanto@ntu.edu.sg" title="Email">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            </a>
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" title="LinkedIn" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <!-- ORCID -->
-            <a href="https://orcid.org/0000-0001-7343-4043" title="ORCID" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947-.947-.431-.947-.947.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.444 3.588-3.722s-1.313-3.722-3.588-3.722h-2.297z"/></svg>
-            </a>
-            <!-- Google Scholar -->
-            <a href="https://scholar.google.com/citations?user=PZ6fS_QAAAAJ&hl=en" title="Google Scholar" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
-            </a>
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/shutter_flick/" title="Instagram" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-          </div>
+  <main id="main">
+    <section class="intro">
+      <div class="container intro-grid">
+
+        <div class="intro-photo">
+          <img src="images/profile_composite.png" alt="Portrait of Yohanes Eko Riyanto" width="240" height="288" />
+          <ul class="intro-social">
+            <li>
+              <a href="mailto:yeriyanto@ntu.edu.sg" aria-label="Email" title="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://orcid.org/0000-0001-7343-4043" aria-label="ORCID" title="ORCID" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947-.947-.431-.947-.947.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.444 3.588-3.722s-1.313-3.722-3.588-3.722h-2.297z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://scholar.google.com/citations?user=PZ6fS_QAAAAJ&amp;hl=en" aria-label="Google Scholar" title="Google Scholar" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/shutter_flick/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="about-text">
-          <p style="margin-bottom:1rem;">
-            <strong style="font-size:1.10rem; color:var(--navy);">Yohanes Eko Riyanto</strong><br>
-            <span style="font-size:1.10rem; color:var(--warm-grey); font-weight:600;">Professor of Economics | Chair, <a href="https://www.ntu.edu.sg/sss" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline; text-decoration-color:var(--border);">School of Social Sciences</a></span><br>
-            <span style="font-size:1.10rem; color:var(--warm-grey); font-weight:600;">Nanyang Technological University, Singapore</span>
-          </p>
-          <p>
-            I am an experimental and behavioral economist. My research uses controlled laboratory experiments
-            to study how people make decisions in financial markets, social networks, and institutional
-            environments, integrating theoretical insights with experimental methodology to explore how
-            individuals navigate information and incentives.
-          </p>
-          <p>
-            My work has appeared in the <em>Journal of Finance</em>, <em>Management Science</em>,
-            <em>Economic Journal</em>,
-            <em>Journal of Economic Theory</em>, <em>Review of Economics and Statistics</em>,
-            <em>Games and Economic Behavior</em>, <em>International Economic Review</em>,
-            <em>Experimental Economics</em>, <em>European Economic Review</em>,
-            <em>Journal of Economic Dynamics and Control</em>, and
-            <em>Journal of Economic Behavior and Organization</em>, among others.
-          </p>
-          <p>
-            Beyond my research, I serve as Chair of the School of Social Sciences at NTU, a school spanning
-            Economics, Psychology, Public Policy and Global Affairs, and Sociology, and as Associate Editor
-            of the <em>Journal of Economic Behavior and Organization</em>.
+
+        <div class="intro-text">
+          <p class="eyebrow">Experimental and Behavioral Economics</p>
+          <h1>Yohanes Eko Riyanto</h1>
+          <p class="role">
+            Professor of Economics<br />
+            Chair, <a href="https://www.ntu.edu.sg/sss" target="_blank" rel="noopener noreferrer">School of Social Sciences</a><br />
+            Nanyang Technological University, Singapore
           </p>
 
-          <!-- Expandable section -->
-          <div id="more-about">
+          <div class="prose">
             <p>
-              Prior to this, I served as Associate Dean for Research of the College of Humanities, Arts,
-              and Social Sciences, and have held several school-level positions spanning research, academic
-              affairs, and undergraduate education. My work has been recognised by the Vernon L. Smith
-              Award for Excellence in Experimental Finance (2020) and was a finalist for the Exeter Prize
-              in Experimental Economics, Decision Theory, and Behavioral Economics (2016). My research has
-              attracted competitive funding from various bodies, including Singapore's National Research
-              Foundation, Ministry of Education, Economic Development Board, Temasek Lab, AI Singapore,
-              and the Hong Kong Research Grants Council, reflecting work that reaches well beyond economics
-              into other fields.
+              I am an experimental and behavioral economist. My research uses controlled laboratory experiments
+              to study how people make decisions in financial markets, social networks, and institutional
+              environments, integrating theoretical insights with experimental methodology to explore how
+              individuals navigate information and incentives.
             </p>
             <p>
-              My teaching spans behavioral economics, experimental methods, and microeconomics at NTU.
-              Outside the classroom, I have engaged with government agencies and industry partners,
-              including Singapore's Land Transport Authority, Economic Development Board, and Ministry of
-              Social and Family Development, on applied research. A collaboration with ENGIE and ERI@N
-              through the PowerZ initiative explored whether information disclosure and behavioral design
-              could encourage more energy-efficient choices in practice.
+              My work has appeared in the <em>Journal of Finance</em>, <em>Management Science</em>,
+              <em>Economic Journal</em>,
+              <em>Journal of Economic Theory</em>, <em>Review of Economics and Statistics</em>,
+              <em>Games and Economic Behavior</em>, <em>International Economic Review</em>,
+              <em>Experimental Economics</em>, <em>European Economic Review</em>,
+              <em>Journal of Economic Dynamics and Control</em>, and
+              <em>Journal of Economic Behavior and Organization</em>, among others.
             </p>
+            <p>
+              Beyond my research, I serve as Chair of the School of Social Sciences at NTU, a school spanning
+              Economics, Psychology, Public Policy and Global Affairs, and Sociology, and as Associate Editor
+              of the <em>Journal of Economic Behavior and Organization</em>.
+            </p>
+
+            <div class="intro-more" id="more-about">
+              <p>
+                Prior to this, I served as Associate Dean for Research of the College of Humanities, Arts,
+                and Social Sciences, and have held several school-level positions spanning research, academic
+                affairs, and undergraduate education. My work has been recognised by the Vernon L. Smith
+                Award for Excellence in Experimental Finance (2020) and was a finalist for the Exeter Prize
+                in Experimental Economics, Decision Theory, and Behavioral Economics (2016). My research has
+                attracted competitive funding from various bodies, including Singapore's National Research
+                Foundation, Ministry of Education, Economic Development Board, Temasek Lab, AI Singapore,
+                and the Hong Kong Research Grants Council, reflecting work that reaches well beyond economics
+                into other fields.
+              </p>
+              <p>
+                My teaching spans behavioral economics, experimental methods, and microeconomics at NTU.
+                Outside the classroom, I have engaged with government agencies and industry partners,
+                including Singapore's Land Transport Authority, Economic Development Board, and Ministry of
+                Social and Family Development, on applied research. A collaboration with ENGIE and ERI@N
+                through the PowerZ initiative explored whether information disclosure and behavioral design
+                could encourage more energy-efficient choices in practice.
+              </p>
+            </div>
+
+            <button type="button" class="text-button" data-disclosure aria-expanded="false" aria-controls="more-about" data-open-label="Show less">
+              <span class="disclosure-label">More about me</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
           </div>
 
-          <button type="button" id="more-about-btn" aria-expanded="false">More about me &rarr;</button>
-          <div class="about-links">
-            <a href="cv.pdf" target="_blank" rel="noopener noreferrer" class="tag-link">↓ Curriculum Vitae</a>
-            <a href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer" class="tag-link">↗ NTU Official Page</a>
-            <a href="mailto:yeriyanto@ntu.edu.sg" class="tag-link">✉ yeriyanto@ntu.edu.sg</a>
+          <div class="intro-actions">
+            <a class="btn btn-primary" href="cv.pdf" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              Curriculum Vitae (PDF)
+            </a>
+            <a class="btn" href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer">NTU profile</a>
+            <a class="btn" href="mailto:yeriyanto@ntu.edu.sg">yeriyanto@ntu.edu.sg</a>
           </div>
         </div>
+
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ── Footer ── -->
   <footer class="site-footer">
-    <p>© 2025 Yohanes Eko Riyanto &nbsp;·&nbsp; Nanyang Technological University, Singapore</p>
+    <div class="container footer-inner">
+      <div class="footer-id">
+        <p class="footer-name">Yohanes Eko Riyanto</p>
+        <p>Professor of Economics<br />Chair, School of Social Sciences<br />Nanyang Technological University, Singapore</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae</a></li>
+        <li><a href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer">NTU profile</a></li>
+        <li><a href="mailto:yeriyanto@ntu.edu.sg">Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=PZ6fS_QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0001-7343-4043" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+        <li><a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="footer-base"><p>© 2026 Yohanes Eko Riyanto</p></div>
+    </div>
   </footer>
 
-  <script>
-    // More about me toggle
-    const moreBtn     = document.getElementById('more-about-btn');
-    const moreSection = document.getElementById('more-about');
-    moreBtn.addEventListener('click', () => {
-      const isOpen = moreSection.classList.toggle('open');
-      moreBtn.textContent = isOpen ? '← Less' : 'More about me →';
-      moreBtn.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Mobile menu toggle
-    const toggle = document.getElementById('navToggle');
-    const links  = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-    });
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !links.contains(e.target)) {
-        links.classList.remove('open');
-      }
-    });
-  </script>
+  <script src="site.js" defer></script>
 
   <!-- Start of StatCounter Code -->
   <script type="text/javascript">

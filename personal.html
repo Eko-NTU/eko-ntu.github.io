@@ -3,206 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal photos of Yohanes Eko Riyanto." />
-  <title>Personal | Yohanes Eko Riyanto</title>
+  <meta name="description" content="Photography by Yohanes Eko Riyanto." />
+  <meta name="theme-color" content="#FAF9F6" />
+  <title>Photography | Yohanes Eko Riyanto</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ── Album grid ── */
-    .album-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
-      gap: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
-    .album-card {
-      cursor: pointer;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 2px solid transparent;
-      box-shadow: 0 2px 8px rgba(12,26,46,0.08);
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      background: #fff;
-    }
-    .album-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(12,26,46,0.14); }
-    .album-card.active { border-color: var(--gold); }
-    .album-cover {
-      position: relative; aspect-ratio: 4/3; overflow: hidden;
-    }
-    .album-cover img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
-    .album-card:hover .album-cover img { transform:scale(1.04); }
-    .album-cover-placeholder {
-      width:100%; height:100%; display:flex; align-items:center;
-      justify-content:center; font-size:2.8rem;
-    }
-    .album-badge {
-      position:absolute; bottom:8px; right:8px;
-      background:rgba(12,26,46,0.65); color:#fff;
-      font-size:0.68rem; font-weight:600; padding:2px 8px;
-      border-radius:20px;
-    }
-    .album-meta { padding:0.65rem 0.85rem 0.75rem; }
-    .album-name { margin:0; font-size:0.88rem; font-weight:700; color:var(--navy); }
-    .album-sub  { margin:0.12rem 0 0; font-size:0.74rem; color:var(--warm-grey); }
-
-    /* ── Expanded panels (shared) ── */
-    .gallery-panel {
-      display:none; margin-top:1.8rem; margin-bottom:2.5rem;
-      border-top:2px solid var(--gold); padding-top:1.3rem;
-      animation:slideDown 0.25s ease;
-    }
-    .gallery-panel.open { display:block; }
-    @keyframes slideDown {
-      from { opacity:0; transform:translateY(-8px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-    .panel-header {
-      display:flex; align-items:center; justify-content:space-between;
-      margin-bottom:1.1rem;
-    }
-    .panel-title { font-size:0.95rem; font-weight:700; color:var(--navy); }
-    .panel-close {
-      background:none; border:1px solid var(--border-light);
-      cursor:pointer; font-size:0.78rem; color:var(--warm-grey);
-      padding:3px 10px; border-radius:4px; transition:background 0.15s;
-    }
-    .panel-close:hover { background:var(--cream); }
-
-    /* ── Sub-album grid ── */
-    .subalbum-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(155px, 1fr));
-      gap:1rem;
-    }
-    .subalbum-card {
-      cursor:pointer; border-radius:7px; overflow:hidden;
-      border:2px solid transparent;
-      box-shadow:0 1px 6px rgba(12,26,46,0.08);
-      background:#fff; transition:transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
-    .subalbum-card:hover { transform:translateY(-2px); box-shadow:0 4px 14px rgba(12,26,46,0.13); }
-    .subalbum-card.active { border-color:var(--gold); }
-    .subalbum-cover {
-      aspect-ratio:4/3; overflow:hidden; position:relative;
-    }
-    .subalbum-cover img { width:100%; height:100%; object-fit:cover; display:block; }
-    .subalbum-cover-placeholder {
-      width:100%; height:100%; display:flex; align-items:center;
-      justify-content:center; font-size:1.6rem;
-    }
-    .subalbum-meta { padding:0.5rem 0.7rem 0.6rem; }
-    .subalbum-name { margin:0; font-size:0.82rem; font-weight:700; color:var(--navy); }
-    .subalbum-count { margin:0.1rem 0 0; font-size:0.72rem; color:var(--warm-grey); }
-
-    /* ── Photo grid ── */
-    .photo-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(155px, 1fr));
-      gap:0.55rem;
-    }
-    .photo-thumb {
-      aspect-ratio:1; overflow:hidden; border-radius:5px;
-      cursor:pointer; transition:transform 0.2s, box-shadow 0.2s;
-    }
-    .photo-thumb:hover { transform:scale(1.03); box-shadow:0 4px 12px rgba(12,26,46,0.18); }
-    .photo-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-
-    /* ── Lightbox ── */
-    .lightbox {
-      display:none; position:fixed; inset:0;
-      background:rgba(8,16,32,0.94); z-index:2000;
-      align-items:center; justify-content:center;
-    }
-    .lightbox.open { display:flex; }
-    .lightbox-img-wrap { position:relative; max-width:88vw; max-height:88vh; }
-    .lightbox-img-wrap img { display:block; max-width:88vw; max-height:88vh; object-fit:contain; border-radius:4px; }
-    .lightbox-close {
-      position:absolute; top:1.2rem; right:1.5rem;
-      color:#fff; font-size:1.8rem; cursor:pointer;
-      background:none; border:none; opacity:0.8; transition:opacity 0.15s;
-    }
-    .lightbox-close:hover { opacity:1; }
-    .lightbox-nav {
-      position:absolute; top:50%; transform:translateY(-50%);
-      color:#fff; font-size:2.2rem; cursor:pointer;
-      background:rgba(255,255,255,0.08); border:none;
-      padding:0.4rem 0.9rem; border-radius:4px; transition:background 0.15s;
-    }
-    .lightbox-nav:hover { background:rgba(255,255,255,0.18); }
-    .lightbox-prev { left:1rem; }
-    .lightbox-next { right:1rem; }
-    .lightbox-caption {
-      position:absolute; bottom:-2rem; left:0; right:0;
-      text-align:center; color:rgba(255,255,255,0.5); font-size:0.78rem;
-    }
-
-    /* ── Placeholder gradients ── */
-    .grad-travel    { background:linear-gradient(135deg,#f4a35a,#e07b39); }
-    .grad-family    { background:linear-gradient(135deg,#e8a0a0,#c26b6b); }
-    .grad-academic  { background:linear-gradient(135deg,#4a6fa5,#0C1A2E); }
-    .grad-singapore { background:linear-gradient(135deg,#52a07a,#2d6e50); }
-    .grad-hobbies   { background:linear-gradient(135deg,#8b6fb5,#5c3d8f); }
-
-    .empty-note {
-      padding:1.8rem; text-align:center;
-      color:var(--warm-grey); font-size:0.85rem;
-      border:1px dashed var(--border-light); border-radius:6px;
-    }
-
-    /* ── Photography profiles ── */
-    .photo-platforms {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    .photo-platform {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      padding: 0.65rem 1.1rem;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      text-decoration: none;
-      color: var(--navy);
-      font-family: var(--font-ui);
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      transition: all var(--transition);
-    }
-    .photo-platform:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      box-shadow: 0 2px 10px rgba(184,136,46,0.12);
-      text-decoration: none;
-    }
-    .photo-platform svg { flex-shrink: 0; }
-
-    /* ── Flickr thumbnails ── */
-    .flickr-thumb-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    .flickr-thumb {
-      aspect-ratio: 1;
-      overflow: hidden;
-      border-radius: 4px;
-      display: block;
-    }
-    .flickr-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      filter: grayscale(15%);
-    }
-    .flickr-thumb:hover img {
-      transform: scale(1.05);
-      filter: grayscale(0%);
-    }
-  </style>
 </head>
 <body>
 
@@ -221,6 +29,9 @@
 
      To set an album/sub-album cover image, add a "cover" field.
      If omitted, the first photo is used; if no photos, the emoji icon shows.
+
+     The "Photo Gallery" section stays hidden until at least one album
+     contains a photo.
 ═══════════════════════════════════════════════════════════════════════════ -->
 <script>
 const ALBUMS = [
@@ -265,124 +76,139 @@ const ALBUMS = [
      END CONFIGURATION
 ═══════════════════════════════════════════════════════════════════════════ -->
 
-  <!-- ── Navigation ── -->
-  <nav class="nav" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand"><span class="nav-monogram">YER</span></a>
-      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="working-papers.html">Working Papers</a></li>
-        <li><a href="personal.html" class="active">Personal</a></li>
-      </ul>
-    </div>
-  </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ── Page Hero ── -->
-  <header class="page-hero">
-    <div class="page-hero-inner">
-      <p class="page-hero-label">Yohanes Eko Riyanto</p>
-      <h1 class="page-hero-title">Personal</h1>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Yohanes Eko Riyanto</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+        <span class="nav-toggle-label">Menu</span>
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="working-papers.html">Working Papers</a></li>
+          <li><a href="personal.html" aria-current="page">Photography</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- ── Photography Profiles ── -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <p class="section-label">Photography Online</p>
-      <h2 class="section-title">Find Me On</h2>
-      <div class="photo-platforms">
-        <!-- Flickr -->
-        <a href="https://www.flickr.com/people/shutter_flick/" target="_blank" rel="noopener noreferrer" class="photo-platform">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-            <circle cx="7" cy="12" r="4.5"/>
-            <circle cx="17" cy="12" r="4.5"/>
-          </svg>
-          Flickr
-        </a>
-        <!-- Photo.Net -->
-        <a href="https://www.photo.net/profile/239523-yohanesriyanto/" target="_blank" rel="noopener noreferrer" class="photo-platform">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          Photo.Net
-        </a>
+  <main id="main">
+    <header class="page-header">
+      <div class="container">
+        <p class="eyebrow">Beyond Research</p>
+        <h1>Photography</h1>
+        <ul class="photo-platforms">
+          <li>
+            <a class="btn" href="https://www.flickr.com/people/shutter_flick/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="7" cy="12" r="4.5"/><circle cx="17" cy="12" r="4.5"/></svg>
+              Flickr
+            </a>
+          </li>
+          <li>
+            <a class="btn" href="https://www.photo.net/profile/239523-yohanesriyanto/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              Photo.Net
+            </a>
+          </li>
+          <li>
+            <a class="btn" href="https://www.instagram.com/shutter_flick/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Instagram
+            </a>
+          </li>
+        </ul>
       </div>
+    </header>
 
-      <p class="section-label" style="margin-top:0.5rem;">Recent shots</p>
-      <h2 class="section-title">Latest from Flickr</h2>
-      <div class="flickr-thumb-grid" id="flickr-thumb-grid">
-        <p style="color:var(--warm-grey); font-size:0.85rem; grid-column:1/-1;">Loading…</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Gallery ── -->
-  <section class="section">
-    <div class="section-inner">
-      <p class="section-label">Browse by album</p>
-      <h2 class="section-title">Photo Gallery</h2>
-
-      <!-- Album cards (rendered by JS) -->
-      <div class="album-grid" id="album-grid"></div>
-
-      <!-- Sub-album panel (rendered by JS) -->
-      <div class="gallery-panel" id="subalbum-panel">
-        <div class="panel-header">
-          <span class="panel-title" id="subalbum-panel-title"></span>
-          <button class="panel-close" onclick="closeSubalbumPanel()">✕ Close</button>
+    <!-- ── Latest from Flickr ── -->
+    <section class="section" aria-labelledby="flickr-title">
+      <div class="container">
+        <h2 class="section-title" id="flickr-title">Latest from Flickr</h2>
+        <div class="flickr-thumb-grid" id="flickr-thumb-grid">
+          <p class="grid-note">Loading…</p>
         </div>
-        <div class="subalbum-grid" id="subalbum-grid"></div>
       </div>
+    </section>
 
-      <!-- Photo panel (rendered by JS) -->
-      <div class="gallery-panel" id="photo-panel">
-        <div class="panel-header">
-          <span class="panel-title" id="photo-panel-title"></span>
-          <button class="panel-close" onclick="closePhotoPanel()">✕ Close</button>
+    <!-- ── Gallery (shown once albums contain photos) ── -->
+    <section class="section" id="gallery-section" aria-labelledby="gallery-title" hidden>
+      <div class="container">
+        <h2 class="section-title" id="gallery-title">Photo Gallery</h2>
+
+        <div class="album-grid" id="album-grid"></div>
+
+        <div class="gallery-panel" id="subalbum-panel">
+          <div class="panel-header">
+            <h3 class="panel-title" id="subalbum-panel-title"></h3>
+            <button type="button" class="panel-close" onclick="closeSubalbumPanel()">Close</button>
+          </div>
+          <div class="subalbum-grid" id="subalbum-grid"></div>
         </div>
-        <div class="photo-grid" id="photo-grid"></div>
+
+        <div class="gallery-panel" id="photo-panel">
+          <div class="panel-header">
+            <h3 class="panel-title" id="photo-panel-title"></h3>
+            <button type="button" class="panel-close" onclick="closePhotoPanel()">Close</button>
+          </div>
+          <div class="photo-grid" id="photo-grid"></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- ── Lightbox ── -->
-  <div class="lightbox" id="lightbox" onclick="handleLightboxBg(event)">
-    <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
-    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">&#8249;</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" onclick="handleLightboxBg(event)">
+    <button type="button" class="lightbox-close" aria-label="Close" onclick="closeLightbox()">&#10005;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous photo" onclick="lightboxNav(-1)">&#8249;</button>
     <div class="lightbox-img-wrap">
       <img id="lightbox-img" src="" alt="" />
       <p class="lightbox-caption" id="lightbox-caption"></p>
     </div>
-    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">&#8250;</button>
+    <button type="button" class="lightbox-nav lightbox-next" aria-label="Next photo" onclick="lightboxNav(1)">&#8250;</button>
   </div>
 
-  <!-- ── Footer ── -->
-  <footer class="site-footer" style="background:var(--navy);">
-    <p>© 2025 Yohanes Eko Riyanto &nbsp;·&nbsp; Nanyang Technological University, Singapore</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-id">
+        <p class="footer-name">Yohanes Eko Riyanto</p>
+        <p>Professor of Economics<br />Chair, School of Social Sciences<br />Nanyang Technological University, Singapore</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="cv.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae</a></li>
+        <li><a href="https://dr.ntu.edu.sg/cris/rp/rp00594" target="_blank" rel="noopener noreferrer">NTU profile</a></li>
+        <li><a href="mailto:yeriyanto@ntu.edu.sg">Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=PZ6fS_QAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0001-7343-4043" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+        <li><a href="https://www.linkedin.com/in/yohanes-eko-riyanto-58b27824" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="footer-base"><p>© 2026 Yohanes Eko Riyanto</p></div>
+    </div>
   </footer>
 
+  <script src="site.js" defer></script>
   <script>
-    // ── Navbar ──
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
-    const toggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
-    });
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
     // ── State ──
     let activeAlbumId    = null;
     let activeSubalbumId = null;
     let lightboxPhotos   = [];
     let lightboxIndex    = 0;
+    let lightboxOpener   = null;
 
     // ── Render album cards ──
     function renderAlbums() {
+      const hasPhotos = ALBUMS.some(a => a.subAlbums.some(s => s.photos.length > 0));
+      document.getElementById('gallery-section').hidden = !hasPhotos;
+      if (!hasPhotos) return;
+
       const grid = document.getElementById('album-grid');
       grid.innerHTML = ALBUMS.map(a => {
         const count = a.subAlbums.reduce((n, s) => n + s.photos.length, 0);
@@ -391,19 +217,19 @@ const ALBUMS = [
           : (a.subAlbums.length > 0 && a.subAlbums[0].photos.length > 0
               ? a.subAlbums[0].photos[0].src : null);
         const coverHtml = coverSrc
-          ? `<img src="${coverSrc}" alt="${a.name}" />`
-          : `<div class="album-cover-placeholder ${a.gradient}">${a.icon}</div>`;
+          ? `<img src="${esc(coverSrc)}" alt="" />`
+          : `<span class="album-cover-placeholder" aria-hidden="true">${a.icon}</span>`;
         const badge = a.subAlbums.length > 0
           ? `<span class="album-badge">${a.subAlbums.length} album${a.subAlbums.length > 1 ? 's' : ''}${count ? ' · ' + count + ' photos' : ''}</span>`
           : '';
         return `
-          <div class="album-card" id="card-${a.id}" onclick="toggleAlbum('${a.id}')">
-            <div class="album-cover">${coverHtml}${badge}</div>
-            <div class="album-meta">
-              <p class="album-name">${a.name}</p>
-              <p class="album-sub">${a.desc}</p>
-            </div>
-          </div>`;
+          <button type="button" class="album-card" id="card-${a.id}" aria-expanded="false" aria-controls="subalbum-panel" onclick="toggleAlbum('${a.id}')">
+            <span class="album-cover">${coverHtml}${badge}</span>
+            <span class="album-meta">
+              <span class="album-name">${esc(a.name)}</span>
+              <span class="album-sub">${esc(a.desc)}</span>
+            </span>
+          </button>`;
       }).join('');
     }
 
@@ -415,31 +241,36 @@ const ALBUMS = [
       if (activeAlbumId === id && panel.classList.contains('open')) {
         closeSubalbumPanel(); return;
       }
-      // deactivate previous
-      if (activeAlbumId) document.getElementById('card-' + activeAlbumId)?.classList.remove('active');
+      if (activeAlbumId) {
+        const prev = document.getElementById('card-' + activeAlbumId);
+        prev?.classList.remove('active');
+        prev?.setAttribute('aria-expanded', 'false');
+      }
       closePhotoPanel();
 
       activeAlbumId = id;
-      document.getElementById('card-' + id).classList.add('active');
+      const card = document.getElementById('card-' + id);
+      card.classList.add('active');
+      card.setAttribute('aria-expanded', 'true');
       document.getElementById('subalbum-panel-title').textContent = album.name;
 
       const grid = document.getElementById('subalbum-grid');
       if (album.subAlbums.length === 0) {
-        grid.innerHTML = `<div class="empty-note" style="grid-column:1/-1;">No sub-albums yet. Add photos via the config block at the top of personal.html.</div>`;
+        grid.innerHTML = `<div class="empty-note">No photos in this album yet.</div>`;
       } else {
         grid.innerHTML = album.subAlbums.map(s => {
           const coverSrc = s.cover || (s.photos.length > 0 ? s.photos[0].src : null);
           const coverHtml = coverSrc
-            ? `<img src="${coverSrc}" alt="${s.name}" />`
-            : `<div class="subalbum-cover-placeholder ${album.gradient}">📷</div>`;
+            ? `<img src="${esc(coverSrc)}" alt="" />`
+            : `<span class="subalbum-cover-placeholder" aria-hidden="true">📷</span>`;
           return `
-            <div class="subalbum-card" id="subcard-${s.id}" onclick="openSubalbum('${album.id}','${s.id}')">
-              <div class="subalbum-cover">${coverHtml}</div>
-              <div class="subalbum-meta">
-                <p class="subalbum-name">${s.name}</p>
-                <p class="subalbum-count">${s.photos.length} photo${s.photos.length !== 1 ? 's' : ''}</p>
-              </div>
-            </div>`;
+            <button type="button" class="subalbum-card" id="subcard-${s.id}" onclick="openSubalbum('${album.id}','${s.id}')">
+              <span class="subalbum-cover">${coverHtml}</span>
+              <span class="subalbum-meta">
+                <span class="subalbum-name">${esc(s.name)}</span>
+                <span class="subalbum-count">${s.photos.length} photo${s.photos.length !== 1 ? 's' : ''}</span>
+              </span>
+            </button>`;
         }).join('');
       }
       panel.classList.add('open');
@@ -459,12 +290,12 @@ const ALBUMS = [
 
       const grid = document.getElementById('photo-grid');
       if (sub.photos.length === 0) {
-        grid.innerHTML = `<div class="empty-note" style="grid-column:1/-1;">No photos yet.</div>`;
+        grid.innerHTML = `<div class="empty-note">No photos yet.</div>`;
       } else {
         grid.innerHTML = sub.photos.map((p, i) =>
-          `<div class="photo-thumb" onclick="openLightbox('${albumId}','${subId}',${i})">
-             <img src="${p.src}" alt="${p.caption || ''}" loading="lazy" />
-           </div>`
+          `<button type="button" class="photo-thumb" aria-label="View ${esc(p.caption || 'photo ' + (i + 1))}" onclick="openLightbox('${albumId}','${subId}',${i}, this)">
+             <img src="${esc(p.src)}" alt="${esc(p.caption || '')}" loading="lazy" />
+           </button>`
         ).join('');
       }
       panel.classList.add('open');
@@ -474,7 +305,11 @@ const ALBUMS = [
     function closeSubalbumPanel() {
       document.getElementById('subalbum-panel').classList.remove('open');
       document.getElementById('photo-panel').classList.remove('open');
-      if (activeAlbumId) document.getElementById('card-' + activeAlbumId)?.classList.remove('active');
+      if (activeAlbumId) {
+        const card = document.getElementById('card-' + activeAlbumId);
+        card?.classList.remove('active');
+        card?.setAttribute('aria-expanded', 'false');
+      }
       activeAlbumId = null; activeSubalbumId = null;
     }
     function closePhotoPanel() {
@@ -484,24 +319,29 @@ const ALBUMS = [
     }
 
     // ── Lightbox ──
-    function openLightbox(albumId, subId, index) {
+    function openLightbox(albumId, subId, index, opener) {
       const album = ALBUMS.find(a => a.id === albumId);
       const sub   = album.subAlbums.find(s => s.id === subId);
       lightboxPhotos = sub.photos;
       lightboxIndex  = index;
+      lightboxOpener = opener || null;
       showLightboxImage();
       document.getElementById('lightbox').classList.add('open');
       document.addEventListener('keydown', lightboxKeyHandler);
+      document.querySelector('.lightbox-close').focus();
     }
     function showLightboxImage() {
       const p = lightboxPhotos[lightboxIndex];
-      document.getElementById('lightbox-img').src = p.src;
+      const img = document.getElementById('lightbox-img');
+      img.src = p.src;
+      img.alt = p.caption || '';
       document.getElementById('lightbox-caption').textContent =
         (p.caption ? p.caption + '  ' : '') + '(' + (lightboxIndex + 1) + ' / ' + lightboxPhotos.length + ')';
     }
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.removeEventListener('keydown', lightboxKeyHandler);
+      if (lightboxOpener) lightboxOpener.focus();
     }
     function lightboxNav(dir) {
       lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length;
@@ -518,24 +358,34 @@ const ALBUMS = [
     renderAlbums();
 
     // ── Flickr recent photos ──
-    (async function loadFlickr() {
+    // The public feed sends no CORS headers, so it is loaded as JSONP.
+    // 57801323@N00 is the numeric ID of flickr.com/people/shutter_flick.
+    (function loadFlickr() {
       const grid = document.getElementById('flickr-thumb-grid');
-      try {
-        const res  = await fetch('https://api.flickr.com/services/feeds/photos_public.gne?alias=shutter_flick&format=json&nojsoncallback=1');
-        const data = await res.json();
-        const items = (data.items || []).slice(0, 12);
-        if (items.length === 0) throw new Error('empty');
+      let done = false;
+      const fallback = () => {
+        if (done) return;
+        done = true;
+        grid.innerHTML = `<p class="grid-note">
+          Visit <a href="https://www.flickr.com/people/shutter_flick/" target="_blank" rel="noopener noreferrer">my Flickr profile</a> to see my photos.
+        </p>`;
+      };
+      window.renderFlickrFeed = (data) => {
+        const items = ((data && data.items) || []).slice(0, 12);
+        if (done || items.length === 0) return fallback();
+        done = true;
         grid.innerHTML = items.map(item => {
           const thumb = item.media.m.replace('_m.jpg', '_q.jpg');
-          return `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="flickr-thumb" title="${item.title}">
-            <img src="${thumb}" alt="${item.title}" loading="lazy" />
+          return `<a href="${esc(item.link)}" target="_blank" rel="noopener noreferrer" class="flickr-thumb" title="${esc(item.title)}">
+            <img src="${esc(thumb)}" alt="${esc(item.title)}" loading="lazy" />
           </a>`;
         }).join('');
-      } catch(e) {
-        grid.innerHTML = `<p style="color:var(--warm-grey);font-size:0.85rem;grid-column:1/-1;">
-          Visit <a href="https://www.flickr.com/people/shutter_flick/" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">my Flickr profile</a> to see my photos.
-        </p>`;
-      }
+      };
+      const s = document.createElement('script');
+      s.src = 'https://api.flickr.com/services/feeds/photos_public.gne?id=57801323@N00&format=json&jsoncallback=renderFlickrFeed';
+      s.onerror = fallback;
+      document.body.appendChild(s);
+      setTimeout(fallback, 8000);
     })();
   </script>
 
