@@ -307,7 +307,8 @@ a:hover { color: var(--accent-hover); text-decoration-color: currentColor; }
 }
 
 /* ── Home: introduction ──────────────────────────────────── */
-.intro { padding: 4rem 0 4.5rem; }
+.intro { padding: 4rem 0 3.5rem; }
+.intro + .section { border-top: 1px solid var(--rule); }
 .intro-grid {
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
@@ -359,6 +360,141 @@ a:hover { color: var(--accent-hover); text-decoration-color: currentColor; }
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-top: 1.75rem;
+}
+
+.statement {
+  max-width: 34ch;
+  text-wrap: balance;
+  margin: 0 0 1.25rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.intro-bio { margin-top: 1.5rem; }
+.intro-bio-panel { margin-top: 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule-soft); }
+.intro-bio-panel h2 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+
+/* ── Home: section heading row ───────────────────────────── */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: 1.75rem;
+}
+.section-head .section-title { margin: 0; }
+.section-link { font-size: 0.9375rem; font-weight: 500; white-space: nowrap; }
+
+/* ── Home: selected research ─────────────────────────────── */
+.selected-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.selected-item {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--ink);
+}
+.selected-venue {
+  margin: 0 0 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+.selected-venue cite { font-style: italic; }
+.selected-item h3 { margin: 0 0 0.4rem; font-size: 1.1875rem; line-height: 1.35; }
+.selected-authors { margin: 0 0 0.9rem; font-size: 0.875rem; color: var(--muted); }
+.selected-item p.selected-summary { margin: 0 0 1rem; font-size: 1rem; line-height: 1.6; }
+.selected-item .pub-badge { align-self: flex-start; margin: 0 0 1rem; }
+.selected-link { margin-top: auto; font-size: 0.9375rem; font-weight: 500; }
+
+/* ── Home: research themes ───────────────────────────────── */
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 3.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.theme h3 { margin: 0 0 0.4rem; font-size: 1.125rem; }
+.theme p { margin: 0; font-size: 1rem; color: var(--muted); max-width: 52ch; }
+
+/* ── Home: leadership & service ──────────────────────────── */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+.service-col h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.entry-list { margin: 0; padding: 0; list-style: none; }
+.entry-list li {
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-top: 1px solid var(--rule-soft);
+}
+.entry-list li:last-child { border-bottom: 1px solid var(--rule-soft); }
+.entry-dates {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Home: contact ───────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+}
+.contact-grid h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.contact-grid address { font-style: normal; }
+.contact-email { font-size: 1.125rem; font-weight: 500; }
+.profile-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 0.5rem 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 960px) {
+  .selected-list { grid-template-columns: 1fr; gap: 2rem; }
+  .selected-item p.selected-summary { max-width: var(--measure); }
+  .service-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 767px) {
+  .themes-grid,
+  .service-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .profile-links { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 767px) {
