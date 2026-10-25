@@ -413,6 +413,21 @@ a:hover { color: var(--accent-hover); text-decoration-color: currentColor; }
 .selected-venue cite { font-style: italic; }
 .selected-item h3 { margin: 0 0 0.4rem; font-size: 1.1875rem; line-height: 1.35; }
 .selected-authors { margin: 0 0 0.9rem; font-size: 0.875rem; color: var(--muted); }
+.selected-fig { margin: 0 0 1rem; }
+.selected-fig a { display: block; }
+.selected-fig img {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius);
+}
+.selected-fig figcaption {
+  margin-top: 0.45rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
 .selected-item p.selected-summary { margin: 0 0 1rem; font-size: 1rem; line-height: 1.6; }
 .selected-item .pub-badge { align-self: flex-start; margin: 0 0 1rem; }
 .selected-link { margin-top: auto; font-size: 0.9375rem; font-weight: 500; }
