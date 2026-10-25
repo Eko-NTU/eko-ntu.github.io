@@ -125,12 +125,41 @@ const ALBUMS = [
       </div>
     </header>
 
+    <!-- ── Latest from Instagram (Behold JSON feed; hidden until INSTAGRAM_FEED_URL is set) ── -->
+    <section class="section" id="instagram-section" aria-labelledby="instagram-title" hidden>
+      <div class="container">
+        <h2 class="section-title" id="instagram-title">Latest from Instagram</h2>
+        <div class="flickr-thumb-grid" id="instagram-thumb-grid"></div>
+      </div>
+    </section>
+
     <!-- ── Latest from Flickr ── -->
     <section class="section" aria-labelledby="flickr-title">
       <div class="container">
         <h2 class="section-title" id="flickr-title">Latest from Flickr</h2>
         <div class="flickr-thumb-grid" id="flickr-thumb-grid">
           <p class="grid-note">Loading…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Photo.net (static snapshot: photo.net has no public feed) ── -->
+    <section class="section" aria-labelledby="photonet-title">
+      <div class="container">
+        <h2 class="section-title" id="photonet-title">Latest from Photo.Net</h2>
+        <div class="flickr-thumb-grid">
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/2198099-a-sunset-view-of-suleymaniye-camii/" target="_blank" rel="noopener noreferrer" title="A Sunset View of Suleymaniye Camii"><img src="images/photonet/2198099.jpg" alt="A Sunset View of Suleymaniye Camii" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1061240-harmonious-rows/" target="_blank" rel="noopener noreferrer" title="harmonious rows"><img src="images/photonet/1061240.jpg" alt="harmonious rows" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1059383-front-view/" target="_blank" rel="noopener noreferrer" title="front view"><img src="images/photonet/1059383.jpg" alt="front view" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1058105-though-looking-glass/" target="_blank" rel="noopener noreferrer" title="though looking glass"><img src="images/photonet/1058105.jpg" alt="though looking glass" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1057563-lotus/" target="_blank" rel="noopener noreferrer" title="Lotus"><img src="images/photonet/1057563.jpg" alt="Lotus" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1057559-maple-leaves/" target="_blank" rel="noopener noreferrer" title="Maple Leaves"><img src="images/photonet/1057559.jpg" alt="Maple Leaves" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1056259-daydreaming/" target="_blank" rel="noopener noreferrer" title="Daydreaming"><img src="images/photonet/1056259.jpg" alt="Daydreaming" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1056245-worried/" target="_blank" rel="noopener noreferrer" title="Worried"><img src="images/photonet/1056245.jpg" alt="Worried" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1056226-wondering/" target="_blank" rel="noopener noreferrer" title="wondering"><img src="images/photonet/1056226.jpg" alt="wondering" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1056217-suspicious/" target="_blank" rel="noopener noreferrer" title="Suspicious"><img src="images/photonet/1056217.jpg" alt="Suspicious" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1055494-happiness/" target="_blank" rel="noopener noreferrer" title="happiness"><img src="images/photonet/1055494.jpg" alt="happiness" width="300" height="300" loading="lazy" /></a>
+          <a class="flickr-thumb" href="https://www.photo.net/gallery/image/1055489-angkor-kid/" target="_blank" rel="noopener noreferrer" title="Angkor Kid"><img src="images/photonet/1055489.jpg" alt="Angkor Kid" width="300" height="300" loading="lazy" /></a>
         </div>
       </div>
     </section>
@@ -356,6 +385,35 @@ const ALBUMS = [
 
     // ── Init ──
     renderAlbums();
+
+    // ── Instagram recent posts ──
+    // Paste the Behold JSON feed URL here (https://feeds.behold.so/<feedId>).
+    // The section stays hidden while this is empty or if the feed cannot be loaded.
+    const INSTAGRAM_FEED_URL = '';
+
+    (async function loadInstagram() {
+      if (!INSTAGRAM_FEED_URL) return;
+      const section = document.getElementById('instagram-section');
+      const grid = document.getElementById('instagram-thumb-grid');
+      try {
+        const res = await fetch(INSTAGRAM_FEED_URL);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const posts = (Array.isArray(data) ? data : (data.posts || [])).slice(0, 12);
+        if (posts.length === 0) throw new Error('empty');
+        grid.innerHTML = posts.map(p => {
+          const sized = p.sizes && (p.sizes.medium || p.sizes.small);
+          const img = (sized && sized.mediaUrl) || p.thumbnailUrl || p.mediaUrl;
+          const alt = (p.altText || p.prunedCaption || 'Instagram post').slice(0, 140);
+          return `<a href="${esc(p.permalink)}" target="_blank" rel="noopener noreferrer" class="flickr-thumb" title="${esc(alt)}">
+            <img src="${esc(img)}" alt="${esc(alt)}" loading="lazy" />
+          </a>`;
+        }).join('');
+        section.hidden = false;
+      } catch (e) {
+        section.hidden = true;
+      }
+    })();
 
     // ── Flickr recent photos ──
     // The public feed sends no CORS headers, so it is loaded as JSONP.
